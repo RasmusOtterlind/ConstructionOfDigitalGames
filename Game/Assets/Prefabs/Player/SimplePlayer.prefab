@@ -976,7 +976,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8273104408118092542}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4cbab3d6f82753c42b02b39a5ef7911c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -999,6 +999,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  aimMask:
+    serializedVersion: 2
+    m_Bits: 128
+  targetTransform: {fileID: 0}
   animator: {fileID: 3414859744359572030}
 --- !u!1 &8370259668517787189
 GameObject:

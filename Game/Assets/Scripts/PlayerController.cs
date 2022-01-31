@@ -5,26 +5,36 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float input = 0f;
-    private bool forwardDirection = true;
     private bool canJump = false;
     private bool jump = false;
 
     public Transform groundChecker;
     public LayerMask groundMask;
 
+
+    //Used for aiming
+    public LayerMask aimMask;
+    public Transform targetTransform;
+    private Camera mainCamera;
+
     public Animator animator;
 
     private Rigidbody rigidbody;
+
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
+        handleAiming();
         input = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
@@ -32,8 +42,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Logic used to determine where the character should be facing
+    private int FacingSign
+    {
+        get
+        {
+            Vector3 perp = Vector3.Cross(transform.forward, Vector3.forward);
+            float dir = Vector3.Dot(perp, transform.up);
+            return dir > 0f ? -1 : dir < 0f ? 1 : 0;
+        }
+    }
+
     private void FixedUpdate()
     {
+       
         handleDirection();
         handleAnimation();  
         handleJump();  
@@ -43,21 +65,12 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = new Vector3(input * 5, GetComponent<Rigidbody>().velocity.y, 0);
         //Used for animation transitions
-        animator.SetFloat("SpeedX", rigidbody.velocity.x);
+        animator.SetFloat("SpeedX", FacingSign* rigidbody.velocity.x);
     }
 
     private void handleDirection()
     {
-        if (input < 0 && forwardDirection == true)
-        {
-            rigidbody.transform.Rotate(0, 180, 0);
-            forwardDirection = false;
-        }
-        else if (input > 0 && forwardDirection == false)
-        {
-            rigidbody.transform.Rotate(0, 180, 0);
-            forwardDirection = true;
-        }
+        rigidbody.MoveRotation(Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
     }
 
     private void handleJump()
@@ -69,5 +82,17 @@ public class PlayerController : MonoBehaviour
             jump = false;
         }
     }
+
+    private void handleAiming()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, aimMask))
+        {
+            targetTransform.position = hit.point;
+        }
+    }
+
+
 
 }

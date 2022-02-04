@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,28 +8,37 @@ public class MoveScene : MonoBehaviour
 {
 
     [SerializeField] private GameObject uiElement;
+    
+    private bool isTrigger = false;
 
     private void Start()
     {
         uiElement.SetActive(false);
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
+    
+    private void Update(){
+        if (Input.GetKeyDown(KeyCode.E) && isTrigger)
         {
-            uiElement.SetActive(true);
+            SceneManager.LoadScene(2);
+        }
+    }
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                SceneManager.LoadScene(2);
-            }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            isTrigger = true;
+            uiElement.SetActive(true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        uiElement.SetActive(false);
+        if (other.CompareTag("Player"))
+        {
+            isTrigger = false;
+            uiElement.SetActive(false);
+        }
     }
 
 }

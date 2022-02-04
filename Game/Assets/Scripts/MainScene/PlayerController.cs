@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidbody;
 
+    public GameObject bulletPrefab;
+    public Transform muzzleTransform;
+
 
     
 
@@ -40,6 +43,10 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
         }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
     }
 
     //Logic used to determine where the character should be facing
@@ -56,24 +63,24 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
        
-        handleDirection();
-        handleAnimation();  
-        handleJump();  
+        HandleDirection();
+        HandleAnimation();  
+        HandleJump();  
     }
 
-    private void handleAnimation()
+    private void HandleAnimation()
     {
         rigidbody.velocity = new Vector3(input * 5, GetComponent<Rigidbody>().velocity.y, 0);
         //Used for animation transitions
         animator.SetFloat("SpeedX", FacingSign* rigidbody.velocity.x);
     }
 
-    private void handleDirection()
+    private void HandleDirection()
     {
         rigidbody.MoveRotation(Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(targetTransform.position.x - transform.position.x), 0)));
     }
 
-    private void handleJump()
+    private void HandleJump()
     {
         canJump = Physics.CheckSphere(groundChecker.position, 0.1f, groundMask, QueryTriggerInteraction.Ignore);
         if (jump && canJump)
@@ -91,6 +98,27 @@ public class PlayerController : MonoBehaviour
         {
             targetTransform.position = hit.point;
         }
+    }
+
+    private void Shoot()
+    {
+        var go = Instantiate(bulletPrefab);
+        go.transform.position = muzzleTransform.position;
+        var bullet = go.GetComponent<BasicBullet>();
+        Vector3 euler = new Vector3(muzzleTransform.eulerAngles.x, muzzleTransform.eulerAngles.y, 0);
+        bullet.Fire(go.transform.position, euler, gameObject.layer);
+        
+        Debug.Log(muzzleTransform.localEulerAngles);
+    }
+
+    private void OnAnimatorIK()
+    {
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+        animator.SetIKPosition(AvatarIKGoal.RightHand, targetTransform.position);
+
+
+        animator.SetLookAtWeight(1);
+        animator.SetLookAtPosition(targetTransform.position);
     }
 
 

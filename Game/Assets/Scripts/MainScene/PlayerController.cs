@@ -105,8 +105,7 @@ public class PlayerController : MonoBehaviour
         var go = Instantiate(bulletPrefab);
         go.transform.position = muzzleTransform.position;
         var bullet = go.GetComponent<BasicBullet>();
-        Vector3 euler = new Vector3(muzzleTransform.eulerAngles.x, muzzleTransform.eulerAngles.y, 0);
-        bullet.Fire(go.transform.position, euler, gameObject.layer);
+        bullet.Fire(go.transform.position, muzzleTransform.eulerAngles, gameObject.layer);
         
         Debug.Log(muzzleTransform.localEulerAngles);
     }

@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidbody;
 
-    public GameObject bulletPrefab;
+    public GameObject bullet;
     public Transform muzzleTransform;
 
 
@@ -102,11 +102,10 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        var go = Instantiate(bulletPrefab);
-        go.transform.position = muzzleTransform.position;
-        var bullet = go.GetComponent<BasicBullet>();
-        bullet.Fire(go.transform.position, muzzleTransform.eulerAngles, gameObject.layer);
-        
+        Quaternion offsetRot = new Quaternion(0, -90, 0, 0);
+        GameObject tempBullet = Instantiate(bullet, muzzleTransform.position, offsetRot);
+        tempBullet.GetComponent<BasicBullet>().hitPoint = targetTransform.position;
+
         Debug.Log(muzzleTransform.localEulerAngles);
     }
 

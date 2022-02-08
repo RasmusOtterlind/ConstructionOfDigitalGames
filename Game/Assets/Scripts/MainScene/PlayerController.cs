@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        handleAiming();
+        
         input = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+    }
+
+    private void LateUpdate()
+    {
+        handleAiming();
     }
 
     //Logic used to determine where the character should be facing

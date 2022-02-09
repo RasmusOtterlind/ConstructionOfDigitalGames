@@ -3588,9 +3588,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   capsuleCollider: {fileID: 0}
+  desiredDistanceToPlayer: 3
   detectionRange: 10
   player: {fileID: 0}
-  isInRange: 0
+--- !u!114 &1157976223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157976213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3499010ee5279d04db557764fc1d6d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  playerTransform: {fileID: 1373340483}
+  muzzle: {fileID: 1417873190}
+  bulletPrefab: {fileID: 7337496254223716256, guid: b66ffd1e98822344c9499180db96ee0d, type: 3}
 --- !u!1001 &1162422757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4127,6 +4143,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 470434, guid: 5037d6ea184d2f640bf78dcf9894a269, type: 3}
   m_PrefabInstance: {fileID: 93743427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1417873190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 361966882202454923, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+  m_PrefabInstance: {fileID: 1449433720}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1449433720
 PrefabInstance:

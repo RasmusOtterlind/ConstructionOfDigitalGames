@@ -31,7 +31,6 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
 
-        muzzleTransform.LookAt(playerTransform);
 
         if (canShoot)
         {

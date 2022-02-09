@@ -22,12 +22,15 @@ public class BasicBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.gameObject.tag.Equals("Player"))
+        {
+            collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage();
+        }
         this.GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * power);
         bounces--;
         if (bounces < 1)
         {
             Destroy(this.gameObject);
         }
-
     }
 }

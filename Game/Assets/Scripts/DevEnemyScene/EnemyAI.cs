@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Rigidbody rigidbody;
+    private Rigidbody rigidbody;
 
     public LayerMask groundMask;
     public CapsuleCollider capsuleCollider;
-    public float desiredDistanceToPlayer = 5f;
+    public float desiredDistanceToPlayer = 3f;
    
-    public float detectionRange = 10f;
+    public float detectionRange = 100f;
     public Transform player;
-    public bool isInRange = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,11 +34,12 @@ public class EnemyAI : MonoBehaviour
     private void handleMovement()
     {
         float xDistance = player.transform.position.x - capsuleCollider.transform.position.x;
+
         if (Mathf.Abs(xDistance) < desiredDistanceToPlayer) return;
 
-        if(xDistance < 0)
+        if (xDistance < 0)
         {
-            bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position - new Vector3(0, capsuleCollider.radius, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
+            bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
             if (leftClear)
             {
                 rigidbody.velocity = new Vector3(-1, GetComponent<Rigidbody>().velocity.x, 0);
@@ -47,14 +47,12 @@ public class EnemyAI : MonoBehaviour
 
         } else
         {
-            bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(0, capsuleCollider.radius, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
+            bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
             if (rightClear)
             {
                 rigidbody.velocity = new Vector3(1, GetComponent<Rigidbody>().velocity.x, 0);
             }
         }
-
-
     }
 
     private void handleDetection()
@@ -65,12 +63,7 @@ public class EnemyAI : MonoBehaviour
             if (collider.tag == "Player")
             {
                 player = collider.transform;
-                isInRange = true;
-            } else
-            {
-                isInRange = false;
-            }
+            } 
         }
-        Debug.Log(isInRange);
     }
 }

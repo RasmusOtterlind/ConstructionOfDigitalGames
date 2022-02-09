@@ -3496,6 +3496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7684299e697a1e42824e37385269ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1157976226}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -3519,6 +3520,11 @@ MonoBehaviour:
   playerTransform: {fileID: 146887505}
   muzzle: {fileID: 1417873190}
   bulletPrefab: {fileID: 7337496254223716256, guid: b66ffd1e98822344c9499180db96ee0d, type: 3}
+--- !u!95 &1157976226 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3414859744359572030, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+  m_PrefabInstance: {fileID: 1449433720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1162422757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4081,7 +4087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8756167610760476740, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.3
+      value: 10.27
       objectReference: {fileID: 0}
     - target: {fileID: 8756167610760476740, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
       propertyPath: m_LocalPosition.y

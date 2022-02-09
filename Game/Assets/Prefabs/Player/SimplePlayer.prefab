@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 9083357415260306583}
   m_Layer: 0
   m_Name: SimplePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -994,7 +994,7 @@ Rigidbody:
   m_GameObject: {fileID: 8273104408118092542}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1011,7 +1011,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 4cbab3d6f82753c42b02b39a5ef7911c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.25
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -1038,6 +1038,9 @@ MonoBehaviour:
   animator: {fileID: 3414859744359572030}
   bullet: {fileID: 7337496254223716256, guid: 29bd91cf8d615f144aabcfa15aad43f0, type: 3}
   muzzleTransform: {fileID: 9018671866826713590}
+  health: 100
+  healthSlider: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &8370259668517787189
 GameObject:
   m_ObjectHideFlags: 0

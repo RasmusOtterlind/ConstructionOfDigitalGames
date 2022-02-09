@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,7 +25,11 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform muzzleTransform;
 
-
+    public int health = 100;
+    
+    // UI components
+    public Slider healthSlider;
+    public GameObject inventory;
     
 
     // Start is called before the first frame update
@@ -37,7 +42,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         input = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
@@ -47,6 +51,31 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+        
+        HandleStats();
+        HandleUI();
+    }
+
+    private void HandleUI()
+    {
+        healthSlider.value = health / 100f;
+        if (healthSlider.value < 0)
+        {
+            healthSlider.value = 0;
+        }
+    }
+
+    private void HandleStats()
+    {
+        if (health <= 0)
+        {
+            //dead
+        }
+    }
+    
+    public void TakeDamage()
+    {
+        health -= 10;
     }
 
     private void LateUpdate()

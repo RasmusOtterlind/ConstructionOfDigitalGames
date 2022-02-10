@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask groundMask;
     public CapsuleCollider capsuleCollider;
-    public float desiredDistanceToPlayer = 3f;
+    public float desiredDistanceToPlayer = 5f;
     public float runningSpeed = 3f;
    
     public float detectionRange = 100f;

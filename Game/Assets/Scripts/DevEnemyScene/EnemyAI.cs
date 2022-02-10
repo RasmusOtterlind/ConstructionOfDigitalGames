@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour
     public float runningSpeed = 3f;
    
     public float detectionRange = 100f;
-    public Transform player;
+    private Transform player;
 
     // Start is called before the first frame update
     void Start()

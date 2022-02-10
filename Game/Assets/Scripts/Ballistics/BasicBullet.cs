@@ -7,17 +7,22 @@ public class BasicBullet : MonoBehaviour
     public float power;
     public int bounces;
     public Vector3 hitPoint;
+    public float life = 3;
+    private float lifeTimer;
     // Start is called before the first frame update
     void Start()
     {
-       
+        lifeTimer = Time.time;
         this.GetComponent<Rigidbody>().AddForce((hitPoint - this.transform.position).normalized * power);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(Time.time > lifeTimer + life)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

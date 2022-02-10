@@ -131,6 +131,7 @@ MonoBehaviour:
   power: 1200
   bounces: 2
   hitPoint: {x: 0, y: 0, z: 0}
+  life: 3
 --- !u!96 &1300210622364506010
 TrailRenderer:
   serializedVersion: 2

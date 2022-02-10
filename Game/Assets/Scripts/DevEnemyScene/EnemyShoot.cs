@@ -8,6 +8,11 @@ public class EnemyShoot : MonoBehaviour
 
     public int health = 100;
 
+    public float xLowAim = -0.5f;
+    public float xUpperAim = .0f;
+    public float yLowAim = -0.5f;
+    public float yUpperAim = 2.0f;
+
     public Transform playerTransform;
     private Transform ownTransform;
     private Transform muzzleTransform;
@@ -36,9 +41,12 @@ public class EnemyShoot : MonoBehaviour
         {
             canShoot = false;
 
+            float xAim = Random.Range(xLowAim, xUpperAim);
+            float yAim = Random.Range(yLowAim, yUpperAim);
+
             bullet = Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
             bulletRigidBody = bullet.GetComponent<Rigidbody>();
-            bulletRigidBody.AddForce((playerTransform.position - bullet.GetComponent<Transform>().position).normalized * 50, ForceMode.Impulse);
+            bulletRigidBody.AddForce(((playerTransform.position + new Vector3(xAim, yAim, 0)) - bullet.GetComponent<Transform>().position).normalized * 15, ForceMode.Impulse);
             Destroy(bullet, 3f);
             StartCoroutine(ShootDelay());
         }

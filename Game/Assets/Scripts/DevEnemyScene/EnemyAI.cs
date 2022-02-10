@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
             bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
             if (rightClear)
             {
-                rigidbody.velocity = new Vector3(2, GetComponent<Rigidbody>().velocity.y, 0);
+                rigidbody.velocity = new Vector3(2 * runningSpeed, GetComponent<Rigidbody>().velocity.y, 0);
                 animator.SetFloat("SpeedX", rigidbody.velocity.x);
             }
         }

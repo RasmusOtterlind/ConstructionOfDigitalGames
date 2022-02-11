@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,15 @@ public class PlayerController : MonoBehaviour
     private float input = 0f;
     private bool canJump = false;
     private bool jump = false;
+
+    private float recoil = 0;
+    private float shootCooldown = 0;
+    private Vector3 hitPoint;
+    private Vector3 deltaVector;
+    public float fireRate = 4;
+    private float recoilIncrease = 0.2f;
+    private float maxRecoil = 3f;
+   
 
     public Transform groundChecker;
     public LayerMask groundMask;
@@ -48,13 +58,26 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             Shoot();
+        }
+        else
+        {
+            LowerRecoil();
         }
         
         HandleStats();
         HandleUI();
+    }
+
+    private void LowerRecoil()
+    {
+        if(recoil > 0)
+        {
+            recoil -= 0.05f;
+        }
+        
     }
 
     private void HandleUI()
@@ -81,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        handleAiming();
+        HandleAiming();
     }
 
     //Logic used to determine where the character should be facing
@@ -126,7 +149,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void handleAiming()
+    private void HandleAiming()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -138,11 +161,29 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        Quaternion offsetRot = new Quaternion(0, -90, 0, 0);
-        GameObject tempBullet = Instantiate(bullet, muzzleTransform.position, offsetRot);
-        tempBullet.GetComponent<BasicBullet>().hitPoint = targetTransform.position;
+        
+        shootCooldown += 60 * Time.deltaTime;
+        if (shootCooldown >= fireRate )
+        {
+            //pretty sure you can normalize the deltaVector in order to scale the recoil but I will have to look at it
+            deltaVector = targetTransform.position - muzzleTransform.position;
+            
+            Quaternion offsetRot = new Quaternion(0, -90, 0, 0);
+            //We need to scale the recoil to how close we aim to the muzzle
+          
+            hitPoint = deltaVector.normalized + muzzleTransform.position;
+            hitPoint += new Vector3(Random.Range(-recoil, recoil), Random.Range(-recoil, recoil), 0) *0.05f;
+            GameObject tempBullet = Instantiate(bullet, muzzleTransform.position, offsetRot);
+            tempBullet.GetComponent<BasicBullet>().hitPoint = hitPoint;
+            shootCooldown = 0;
 
-        Debug.Log(muzzleTransform.localEulerAngles);
+            if(recoil < maxRecoil)
+            {
+                recoil += recoilIncrease;
+            }
+
+        }
+       
     }
 
     private void OnAnimatorIK()

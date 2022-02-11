@@ -588,6 +588,7 @@ MonoBehaviour:
   desiredDistanceToPlayer: 5
   runningSpeed: 3
   detectionRange: 100
+  enemyShoot: {fileID: 4346898825704959665}
 --- !u!114 &4346898825704959665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +606,6 @@ MonoBehaviour:
   xUpperAim: 2
   yLowAim: -0.5
   yUpperAim: 2
-  playerTransform: {fileID: 0}
   muzzle: {fileID: 4346898825436230113}
   bulletPrefab: {fileID: 7337496254223716256, guid: b66ffd1e98822344c9499180db96ee0d, type: 3}
 --- !u!1 &3924036950272946529

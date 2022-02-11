@@ -39,7 +39,10 @@ public class EnemyAI : MonoBehaviour
         float xDistance = player.transform.position.x - capsuleCollider.transform.position.x;
         float yDistance = player.transform.position.y - capsuleCollider.transform.position.y;
         
-        rigidbody.MoveRotation(Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(player.position.x - capsuleCollider.transform.position.x), 0)));
+        if (Mathf.Abs(xDistance) > 0.1f)
+        {
+            rigidbody.MoveRotation(Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(player.position.x - capsuleCollider.transform.position.x), 0)));
+        }
 
         if (Mathf.Abs(xDistance) < desiredDistanceToPlayer && Mathf.Abs(yDistance) < 1f)
         {

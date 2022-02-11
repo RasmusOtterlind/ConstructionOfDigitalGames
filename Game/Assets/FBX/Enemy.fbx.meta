@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5459a9a707e0f0a499deae4df480d59a
+guid: 934cc57df128fd04c8adc325705a1089
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -15,18 +15,6 @@ ModelImporter:
   - first:
       74: 5539831331247536789
     second: Jump
-  - first:
-      74: -1437223564310770781
-    second: Armature|0Tpose
-  - first:
-      74: -8945691123924629249
-    second: Armature|Idle
-  - first:
-      74: 1079665108409675491
-    second: Armature|Jump
-  - first:
-      74: -7551964380084998518
-    second: Armature|Run
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -90,7 +78,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -113,7 +101,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Root
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1

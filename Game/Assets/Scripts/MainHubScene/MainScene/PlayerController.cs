@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform groundChecker;
     public LayerMask groundMask;
+    public LayerMask enemyMask;
 
 
     //Used for aiming
@@ -116,7 +117,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
-        canJump = Physics.CheckSphere(groundChecker.position, 0.1f, groundMask, QueryTriggerInteraction.Ignore);
+        canJump = Physics.CheckSphere(groundChecker.position, 0.1f, groundMask, QueryTriggerInteraction.Ignore)
+                || Physics.CheckSphere(groundChecker.position, 0.1f, enemyMask, QueryTriggerInteraction.Ignore);
         if (jump && canJump)
         {
             rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);

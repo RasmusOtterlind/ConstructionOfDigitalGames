@@ -1031,6 +1031,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 1024
   aimMask:
     serializedVersion: 2
     m_Bits: 128

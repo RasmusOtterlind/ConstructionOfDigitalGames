@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask groundMask;
     public CapsuleCollider capsuleCollider;
-    public float desiredDistanceToPlayer = 3f;
+    public float desiredDistanceToPlayer = 5f;
     public float runningSpeed = 3f;
    
     public float detectionRange = 100f;
@@ -52,7 +52,7 @@ public class EnemyAI : MonoBehaviour
             bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
             if (leftClear)
             {
-                rigidbody.velocity = new Vector3(-2 * runningSpeed, GetComponent<Rigidbody>().velocity.x, 0);
+                rigidbody.velocity = new Vector3(-2 * runningSpeed, GetComponent<Rigidbody>().velocity.y, 0);
                 animator.SetFloat("SpeedX", -1 * rigidbody.velocity.x);
             }
 
@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
             bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
             if (rightClear)
             {
-                rigidbody.velocity = new Vector3(2, GetComponent<Rigidbody>().velocity.x, 0);
+                rigidbody.velocity = new Vector3(2 * runningSpeed, GetComponent<Rigidbody>().velocity.y, 0);
                 animator.SetFloat("SpeedX", rigidbody.velocity.x);
             }
         }

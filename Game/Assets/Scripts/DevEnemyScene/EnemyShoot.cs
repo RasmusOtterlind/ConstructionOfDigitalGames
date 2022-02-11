@@ -13,8 +13,8 @@ public class EnemyShoot : MonoBehaviour
     public float yLowAim = -0.5f;
     public float yUpperAim = 2.0f;
 
-    public Transform playerTransform;
-    private Transform ownTransform;
+    private float power = 15f;
+
     private Transform muzzleTransform;
 
     public GameObject muzzle;
@@ -23,38 +23,19 @@ public class EnemyShoot : MonoBehaviour
 
     private Rigidbody bulletRigidBody;
 
-    private bool canShoot;
 
     void Start()
     {
-        ownTransform = GetComponent<Transform>();
         muzzleTransform = muzzle.GetComponent<Transform>();
-        canShoot = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Shoot(Transform target)
     {
+        float xAim = Random.Range(xLowAim, xUpperAim);
+        float yAim = Random.Range(yLowAim, yUpperAim);
 
-
-        if (canShoot)
-        {
-            canShoot = false;
-
-            float xAim = Random.Range(xLowAim, xUpperAim);
-            float yAim = Random.Range(yLowAim, yUpperAim);
-
-            bullet = Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
-            bulletRigidBody = bullet.GetComponent<Rigidbody>();
-            bulletRigidBody.AddForce(((playerTransform.position + new Vector3(xAim, yAim, 0)) - bullet.GetComponent<Transform>().position).normalized * 15, ForceMode.Impulse);
-            Destroy(bullet, 3f);
-            StartCoroutine(ShootDelay());
-        }
-    }
-
-    IEnumerator ShootDelay()
-    {
-        yield return new WaitForSeconds(1f);
-        canShoot = true;
+        bullet = Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
+        bulletRigidBody = bullet.GetComponent<Rigidbody>();
+        bulletRigidBody.AddForce(((target.position + new Vector3(xAim, yAim, 0)) - bullet.GetComponent<Transform>().position).normalized * power, ForceMode.Impulse);
+        Destroy(bullet, 3f);
     }
 }

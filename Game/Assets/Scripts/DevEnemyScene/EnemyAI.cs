@@ -14,13 +14,18 @@ public class EnemyAI : MonoBehaviour
     public float runningSpeed = 3f;
    
     public float detectionRange = 100f;
+    private float shootDetectionRange = 10f;
     private Transform player;
+
+    public EnemyShoot enemyShoot;
+    private bool canShoot;
 
     // Start is called before the first frame update
     void Start()
     {
        rigidbody = GetComponent<Rigidbody>();
        capsuleCollider = GetComponent<CapsuleCollider>();
+        canShoot = true;
     }
 
     // Update is called once per frame
@@ -78,6 +83,15 @@ public class EnemyAI : MonoBehaviour
     }
     private void handleDetection()
     {
+        Collider[] shootColliders = Physics.OverlapSphere(capsuleCollider.transform.position, shootDetectionRange);
+        foreach (Collider collider in shootColliders)
+        {
+            if (collider.tag == "Player")
+            {
+                StartCoroutine(ShootWithDelay(collider.transform));
+            }
+        }
+
         Collider[] colliders = Physics.OverlapSphere(capsuleCollider.transform.position, detectionRange);
         foreach (Collider collider in colliders)
         {
@@ -86,5 +100,21 @@ public class EnemyAI : MonoBehaviour
                 player = collider.transform;
             } 
         }
+    }
+
+    IEnumerator ShootWithDelay(Transform target)
+    {
+        if (!canShoot)
+        {
+            yield break;
+        }
+
+        canShoot = false;
+
+        yield return new WaitForSeconds(1f);
+
+        enemyShoot.Shoot(target);
+
+        canShoot = true;
     }
 }

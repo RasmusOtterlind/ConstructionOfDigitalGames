@@ -13,7 +13,7 @@ public class EnemyShoot : MonoBehaviour
     public float yLowAim = -0.5f;
     public float yUpperAim = 2.0f;
 
-    public Transform playerTransform;
+    private Transform playerTransform;
     private Transform ownTransform;
     private Transform muzzleTransform;
 
@@ -27,6 +27,7 @@ public class EnemyShoot : MonoBehaviour
 
     void Start()
     {
+        playerTransform = GameObject.FindWithTag("Player").transform;
         ownTransform = GetComponent<Transform>();
         muzzleTransform = muzzle.GetComponent<Transform>();
         canShoot = true;
@@ -36,6 +37,7 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
 
+        print(playerTransform.position);
 
         if (canShoot)
         {

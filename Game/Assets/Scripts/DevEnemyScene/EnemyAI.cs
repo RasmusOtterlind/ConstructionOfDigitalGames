@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public Animator animator;
 
     public LayerMask groundMask;
+    public LayerMask enemyMask;
     public CapsuleCollider capsuleCollider;
     public float desiredDistanceToPlayer = 5f;
     public float runningSpeed = 3f;
@@ -49,23 +50,28 @@ public class EnemyAI : MonoBehaviour
 
         if (xDistance < 0)
         {
-            bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
+            bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore)
+                && !Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, enemyMask, QueryTriggerInteraction.Ignore);
             if (leftClear)
             {
                 rigidbody.velocity = new Vector3(-2 * runningSpeed, GetComponent<Rigidbody>().velocity.y, 0);
                 animator.SetFloat("SpeedX", -1 * rigidbody.velocity.x);
+                return;
             }
 
         }
         else
         {
-            bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore);
+            bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore)
+                && !Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, enemyMask, QueryTriggerInteraction.Ignore);
             if (rightClear)
             {
                 rigidbody.velocity = new Vector3(2 * runningSpeed, GetComponent<Rigidbody>().velocity.y, 0);
                 animator.SetFloat("SpeedX", rigidbody.velocity.x);
+                return;
             }
         }
+        animator.SetFloat("SpeedX", 0);
     }
     private void handleDetection()
     {

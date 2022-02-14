@@ -28,7 +28,7 @@ public class EnemyBullet : MonoBehaviour
             {
                 collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
             }
-            destroy = true;
+            HideGameObject();
         }
     }
 
@@ -37,6 +37,14 @@ public class EnemyBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void HideGameObject()
+    {
+        destroy = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<TrailRenderer>().enabled = false;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
     }
 
 }

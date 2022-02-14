@@ -32,7 +32,7 @@ public class BasicBullet : MonoBehaviour
     {
         if(Time.time > lifeTimer + life)
         {
-            destroy = true;
+            HideGameObject();
         }
         HandleSound();
     }
@@ -51,7 +51,7 @@ public class BasicBullet : MonoBehaviour
         bounces--;
         if (bounces < 1)
         {
-            destroy = true;
+            HideGameObject();
         }
     }
 
@@ -61,6 +61,14 @@ public class BasicBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void HideGameObject()
+    {
+        destroy = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<TrailRenderer>().enabled = false;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
     }
 
 }

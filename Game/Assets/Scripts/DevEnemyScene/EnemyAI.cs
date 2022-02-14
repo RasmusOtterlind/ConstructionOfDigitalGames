@@ -20,12 +20,15 @@ public class EnemyAI : MonoBehaviour
     public EnemyShoot enemyShoot;
     private bool canShoot;
 
+    private EnemyStats enemyStats;
+
     // Start is called before the first frame update
     void Start()
     {
        rigidbody = GetComponent<Rigidbody>();
        capsuleCollider = GetComponent<CapsuleCollider>();
-        canShoot = true;
+       enemyStats = GetComponent<EnemyStats>();
+       canShoot = true;
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class EnemyAI : MonoBehaviour
     {
         
     }
+    
     private void FixedUpdate()
     {
         handleDetection();
@@ -102,6 +106,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    
     IEnumerator ShootWithDelay(Transform target)
     {
         if (!canShoot)
@@ -117,4 +122,14 @@ public class EnemyAI : MonoBehaviour
 
         canShoot = true;
     }
+
+    public void TakeDamage(float damage)
+    {
+        enemyStats.OnHitByBullet(damage);
+        if (enemyStats.getHealth() <= 0f)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
 }

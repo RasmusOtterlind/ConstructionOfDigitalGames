@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform muzzleTransform;
 
-    public int health = 100;
+    public float health = 100;
+    public float damage = 10;
     
     // UI components
     public Slider healthSlider;
@@ -97,9 +98,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void TakeDamage()
+    public void TakeDamage(float damageTaken)
     {
-        health -= 10;
+        health -= damageTaken;
     }
 
     private void LateUpdate()
@@ -174,6 +175,8 @@ public class PlayerController : MonoBehaviour
             hitPoint = deltaVector.normalized + muzzleTransform.position;
             hitPoint += new Vector3(Random.Range(-recoil, recoil), Random.Range(-recoil, recoil), 0) *0.05f;
             GameObject tempBullet = Instantiate(bullet, muzzleTransform.position, offsetRot);
+            tempBullet.GetComponent<BasicBullet>().spawnedByPlayer = true;
+            tempBullet.GetComponent<BasicBullet>().damage = damage;
             tempBullet.GetComponent<BasicBullet>().hitPoint = hitPoint;
             shootCooldown = 0;
 

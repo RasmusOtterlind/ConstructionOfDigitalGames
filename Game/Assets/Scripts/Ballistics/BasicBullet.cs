@@ -9,6 +9,10 @@ public class BasicBullet : MonoBehaviour
     public Vector3 hitPoint;
     public float life = 3;
     private float lifeTimer;
+
+    public float damage = 10;
+
+    public bool spawnedByPlayer = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,15 +31,19 @@ public class BasicBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.gameObject.tag.Equals("Player"))
+        if (collision.transform.gameObject.tag.Equals("Player") && !spawnedByPlayer)
         {
-            collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage();
+            collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
         }
-        this.GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * power);
+        else if (collision.transform.gameObject.tag.Equals("Enemy"))
+        {
+            collision.transform.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+        }
+        GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * power);
         bounces--;
         if (bounces < 1)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    private float damage = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.collider.tag == "Player" || collision.collider.gameObject.layer == 6)
         {
+            collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

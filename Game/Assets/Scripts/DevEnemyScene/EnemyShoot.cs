@@ -23,7 +23,6 @@ public class EnemyShoot : MonoBehaviour
 
     private Rigidbody bulletRigidBody;
 
-
     void Start()
     {
         muzzleTransform = muzzle.GetComponent<Transform>();

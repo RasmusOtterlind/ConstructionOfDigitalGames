@@ -589,6 +589,7 @@ MonoBehaviour:
   desiredDistanceToPlayer: 5
   runningSpeed: 3
   detectionRange: 100
+  eyes: {fileID: 5142858261947021223}
   enemyShoot: {fileID: 4346898825704959665}
 --- !u!114 &4346898825704959665
 MonoBehaviour:

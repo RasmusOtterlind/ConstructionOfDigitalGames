@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class LevelGenerator : MonoBehaviour
 {
     
-    public GameObject[] chunkPrefabs = new GameObject[5];
+    public GameObject[] chunkPrefabs;
     private float nextPosition;
     
     // Start is called before the first frame update

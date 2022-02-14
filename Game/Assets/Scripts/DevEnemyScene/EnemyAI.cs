@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     public float detectionRange = 100f;
     private float shootDetectionRange = 10f;
     private Transform player;
+
+    public Transform eyes;
 
     public EnemyShoot enemyShoot;
     private bool canShoot;
@@ -90,7 +93,7 @@ public class EnemyAI : MonoBehaviour
         Collider[] shootColliders = Physics.OverlapSphere(capsuleCollider.transform.position, shootDetectionRange);
         foreach (Collider collider in shootColliders)
         {
-            if (collider.tag == "Player")
+            if (collider.tag == "Player" && CanSeeTarget(collider.transform))
             {
                 StartCoroutine(ShootWithDelay(collider.transform));
             }
@@ -105,7 +108,6 @@ public class EnemyAI : MonoBehaviour
             } 
         }
     }
-
     
     IEnumerator ShootWithDelay(Transform target)
     {
@@ -123,6 +125,25 @@ public class EnemyAI : MonoBehaviour
         canShoot = true;
     }
 
+    private bool CanSeeTarget(Transform target)
+    {
+        Vector3 targetOffsetPosition = target.position;
+        targetOffsetPosition.y -= 0.5f;
+
+        Vector3 direction = targetOffsetPosition - transform.position;
+
+        RaycastHit hit;
+        Debug.DrawRay(eyes.position, direction, Color.red);
+        if (Physics.Raycast(eyes.position, direction, out hit, shootDetectionRange))
+        {
+            if (hit.transform.gameObject.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void TakeDamage(float damage)
     {
         enemyStats.OnHitByBullet(damage);
@@ -131,5 +152,16 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        Vector3 aimOffset = player.position;
+        aimOffset.y += 1;
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+        animator.SetIKPosition(AvatarIKGoal.RightHand, aimOffset);
+
+
+        animator.SetLookAtWeight(1);
+        animator.SetLookAtPosition(aimOffset);
+    }
 }

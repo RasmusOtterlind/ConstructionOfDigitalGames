@@ -48,6 +48,10 @@ public class EnemyAI : MonoBehaviour
 
     private void handleMovement()
     {
+        if (player == null)
+        {
+            return;
+        }
         float xDistance = player.transform.position.x - capsuleCollider.transform.position.x;
         float yDistance = player.transform.position.y - capsuleCollider.transform.position.y;
         
@@ -155,6 +159,10 @@ public class EnemyAI : MonoBehaviour
 
     private void OnAnimatorIK(int layerIndex)
     {
+        if (player == null)
+        {
+            return;
+        }
         Vector3 aimOffset = player.position;
         aimOffset.y += 1;
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);

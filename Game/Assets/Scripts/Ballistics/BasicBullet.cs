@@ -24,6 +24,7 @@ public class BasicBullet : MonoBehaviour
         lifeTimer = Time.time;
         this.GetComponent<Rigidbody>().AddForce((hitPoint - this.transform.position).normalized * power);
         audioSource = GetComponent<AudioSource>();
+        audioSource.pitch = Random.Range(0.90f, 1.10f);
         audioSource.Play();
     }
 

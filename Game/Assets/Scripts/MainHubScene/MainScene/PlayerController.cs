@@ -74,7 +74,9 @@ public class PlayerController : MonoBehaviour
 
     private void LowerRecoil()
     {
-        if(recoil > 0)
+        shootCooldown += 60 * Time.deltaTime;
+
+        if (recoil > 0 && shootCooldown >= fireRate)
         {
             recoil -= 0.05f;
         }
@@ -162,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        
+
         shootCooldown += 60 * Time.deltaTime;
         if (shootCooldown >= fireRate )
         {

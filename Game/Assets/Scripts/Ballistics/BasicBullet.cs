@@ -31,11 +31,11 @@ public class BasicBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.gameObject.tag.Equals("Player") && !spawnedByPlayer)
+        if (collision.collider.CompareTag("Player") && !spawnedByPlayer)
         {
             collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
         }
-        else if (collision.transform.gameObject.tag.Equals("Enemy"))
+        else if (collision.collider.CompareTag("Enemy"))
         {
             collision.transform.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
         }

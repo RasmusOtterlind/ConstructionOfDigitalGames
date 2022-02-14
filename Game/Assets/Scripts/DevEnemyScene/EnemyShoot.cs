@@ -23,7 +23,10 @@ public class EnemyShoot : MonoBehaviour
 
     void Start()
     {
-        muzzleTransform = muzzle.GetComponent<Transform>();
+        if (muzzle.GetComponent<Transform>() != null)
+        {
+            muzzleTransform = muzzle.GetComponent<Transform>();
+        }
     }
     public void Shoot(Transform target)
     {

@@ -19,9 +19,12 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Player" || collision.collider.gameObject.layer == 6)
+        if(collision.collider.CompareTag("Player") || collision.collider.gameObject.layer == 6)
         {
-            collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            if (collision.transform.gameObject.GetComponent<PlayerController>())
+            {
+                collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }

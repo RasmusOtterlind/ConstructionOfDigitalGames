@@ -6,8 +6,6 @@ public class EnemyShoot : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public int health = 100;
-
     public float xLowAim = -0.5f;
     public float xUpperAim = .0f;
     public float yLowAim = -0.5f;

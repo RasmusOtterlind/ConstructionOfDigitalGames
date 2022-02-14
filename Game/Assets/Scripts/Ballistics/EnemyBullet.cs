@@ -5,16 +5,19 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     private float damage = 10;
+    private bool destroy = false;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        HandleSound();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -25,7 +28,15 @@ public class EnemyBullet : MonoBehaviour
             {
                 collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
             }
+            destroy = true;
+        }
+    }
+
+    private void HandleSound() { 
+        if (!audioSource.isPlaying && destroy)
+        {
             Destroy(gameObject);
         }
     }
+
 }

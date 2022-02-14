@@ -13,11 +13,18 @@ public class BasicBullet : MonoBehaviour
     public float damage = 10;
 
     public bool spawnedByPlayer = false;
+
+    private AudioSource audioSource;
+
+    private bool destroy = false;
+
     // Start is called before the first frame update
     void Start()
     {
         lifeTimer = Time.time;
         this.GetComponent<Rigidbody>().AddForce((hitPoint - this.transform.position).normalized * power);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -25,8 +32,9 @@ public class BasicBullet : MonoBehaviour
     {
         if(Time.time > lifeTimer + life)
         {
-            Destroy(gameObject);
+            destroy = true;
         }
+        HandleSound();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,7 +51,16 @@ public class BasicBullet : MonoBehaviour
         bounces--;
         if (bounces < 1)
         {
+            destroy = true;
+        }
+    }
+
+    private void HandleSound()
+    {
+        if (!audioSource.isPlaying && destroy)
+        {
             Destroy(gameObject);
         }
     }
+
 }

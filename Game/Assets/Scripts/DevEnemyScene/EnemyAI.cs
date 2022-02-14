@@ -105,7 +105,6 @@ public class EnemyAI : MonoBehaviour
             } 
         }
     }
-
     
     IEnumerator ShootWithDelay(Transform target)
     {
@@ -131,5 +130,16 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        Vector3 aimOffset = player.position;
+        aimOffset.y += 1;
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+        animator.SetIKPosition(AvatarIKGoal.RightHand, aimOffset);
+
+
+        animator.SetLookAtWeight(1);
+        animator.SetLookAtPosition(aimOffset);
+    }
 }

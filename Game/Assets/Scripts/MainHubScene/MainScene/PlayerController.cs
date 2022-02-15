@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
             PlayerPrefs.SetInt("gold", gold);
+            gameManager.GetComponent<GameManager>().setShowDeadMenu(true);
         }
     }
     

@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     private int defaultGold = 0;
 
     private bool showMenu = false;
+    private bool showDeadMenu = false;
     public GameObject menu = null;
+    public GameObject deadMenu = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,17 +34,23 @@ public class GameManager : MonoBehaviour
         }
 
         menu.SetActive(showMenu);
+        deadMenu.SetActive(showDeadMenu);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !showDeadMenu)
         {
             showMenu = !showMenu;
             menu.SetActive(showMenu);
             Time.timeScale = showMenu ? 0.0f : 1.0f;
         }
+    }
+
+    public void setShowDeadMenu(bool value)
+    {
+        showDeadMenu = value;
     }
 
     public void OnMainMenuClicked()

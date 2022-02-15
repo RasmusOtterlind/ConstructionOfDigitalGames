@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public GameObject gameManager;
+
     private float input = 0f;
     private bool canJump = false;
     private bool jump = false;
@@ -116,7 +120,6 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
             PlayerPrefs.SetInt("gold", gold);
-            //dead
         }
     }
     

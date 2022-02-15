@@ -15,7 +15,7 @@ public class EnemySpawn : MonoBehaviour
     {
 
         
-        if(1f - spawnChance > Random.Range(0f, 1f) && transform.parent.position != null)
+        if(spawnChance > Random.Range(0f, 1f) && transform.parent.position != null)
         {
             Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], transform.parent.position + transform.position, Quaternion.identity);
 

@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 4;
     private float recoilIncrease = 0.2f;
     private float maxRecoil = 3f;
-   
 
     public Transform groundChecker;
     public LayerMask groundMask;
@@ -36,8 +35,10 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform muzzleTransform;
 
+    //Player Stats
     public float health = 100;
     public float damage = 10;
+    public int gold = 0;
     
     // UI components
     public Slider healthSlider;
@@ -188,7 +189,11 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-       
+    }
+
+    public void onEnemyKilled()
+    {
+        gold += 10;
     }
 
     private void OnAnimatorIK()

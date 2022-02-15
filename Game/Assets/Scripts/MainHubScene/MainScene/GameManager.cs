@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void OnMainMenuClicked()
     {
+        showMenu = !showMenu;
+        Time.timeScale = showMenu ? 0.0f : 1.0f;
         SceneManager.LoadScene(0);
     }
 

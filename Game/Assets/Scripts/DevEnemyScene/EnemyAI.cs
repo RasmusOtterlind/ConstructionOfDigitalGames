@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public CapsuleCollider capsuleCollider;
-    public float desiredDistanceToPlayer = 5f;
+    public float desiredDistanceToPlayer = 15f;
     public float runningSpeed = 3f;
    
     public float detectionRange = 100f;
@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
             rigidbody.MoveRotation(Quaternion.Euler(new Vector3(0, 90 * Mathf.Sign(player.position.x - capsuleCollider.transform.position.x), 0)));
         }
 
-        if (Mathf.Abs(xDistance) < desiredDistanceToPlayer && Mathf.Abs(yDistance) < 1f)
+        if (Mathf.Abs(xDistance) < desiredDistanceToPlayer)
         {
             rigidbody.velocity = new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
             animator.SetFloat("SpeedX", 0);

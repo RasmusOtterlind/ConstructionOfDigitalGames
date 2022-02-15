@@ -37,9 +37,9 @@ public class PlayerController : MonoBehaviour
     public Transform muzzleTransform;
 
     //Player Stats
-    public float health = 100;
-    public float damage = 10;
-    public int gold = 0;
+    public float health;
+    public float damage;
+    public int gold;
     
     // UI components
     public Slider healthSlider;
@@ -48,9 +48,20 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI txtHealth;
     public TextMeshProUGUI txtDamage;
 
+    private void Awake()
+    {
+        health = PlayerPrefs.GetFloat("health");
+        damage = PlayerPrefs.GetFloat("damage");
+        gold = PlayerPrefs.GetInt("gold");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        health = PlayerPrefs.GetFloat("health");
+        damage = PlayerPrefs.GetFloat("damage");
+        gold = PlayerPrefs.GetInt("gold");
+
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         
@@ -96,6 +107,7 @@ public class PlayerController : MonoBehaviour
         }
         healthSlider.value = health / 100f;
         txtHealth.text = "Health: " + health;
+        txtDamage.text = "Damage: " + damage;
     }
 
     private void HandleStats()
@@ -103,6 +115,7 @@ public class PlayerController : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+            PlayerPrefs.SetInt("gold", gold);
             //dead
         }
     }

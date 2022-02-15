@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("damange"))
+        if (!PlayerPrefs.HasKey("damage"))
         {
             PlayerPrefs.SetFloat("damage", defaultDamage);
         }

@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 4;
     private float recoilIncrease = 0.2f;
     private float maxRecoil = 3f;
-   
 
     public Transform groundChecker;
     public LayerMask groundMask;
@@ -36,19 +36,24 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform muzzleTransform;
 
+    //Player Stats
     public float health = 100;
     public float damage = 10;
+    public int gold = 0;
     
     // UI components
     public Slider healthSlider;
     public GameObject inventory;
-    
+    public TextMeshProUGUI txtGold;
+    public TextMeshProUGUI txtHealth;
+    public TextMeshProUGUI txtDamage;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
+        
     }
 
     // Update is called once per frame
@@ -85,17 +90,19 @@ public class PlayerController : MonoBehaviour
 
     private void HandleUI()
     {
-        healthSlider.value = health / 100f;
-        if (healthSlider.value < 0)
+        if (health < 0)
         {
-            healthSlider.value = 0;
+            health = 0;
         }
+        healthSlider.value = health / 100f;
+        txtHealth.text = "Health: " + health;
     }
 
     private void HandleStats()
     {
         if (health <= 0)
         {
+            health = 0;
             //dead
         }
     }
@@ -188,7 +195,12 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-       
+    }
+
+    public void onEnemyKilled()
+    {
+        gold += 10;
+        txtGold.text = "Gold: " + gold;
     }
 
     private void OnAnimatorIK()

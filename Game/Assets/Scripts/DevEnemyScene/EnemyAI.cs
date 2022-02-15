@@ -153,6 +153,7 @@ public class EnemyAI : MonoBehaviour
         enemyStats.OnHitByBullet(damage);
         if (enemyStats.getHealth() <= 0f)
         {
+            player.gameObject.GetComponent<PlayerController>().onEnemyKilled();
             Destroy(gameObject);
         }
     }

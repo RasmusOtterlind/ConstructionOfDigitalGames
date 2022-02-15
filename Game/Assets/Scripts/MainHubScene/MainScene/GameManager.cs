@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private int defaultGold = 0;
 
     private bool showMenu = false;
-    private GameObject menu = null;
+    public GameObject menu = null;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("gold", defaultGold);
         }
 
-        menu = GameObject.Find("GameMenu");
         menu.SetActive(showMenu);
     }
 

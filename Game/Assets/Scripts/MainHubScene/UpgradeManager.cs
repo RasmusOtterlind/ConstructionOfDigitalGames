@@ -15,6 +15,9 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI healthText;
 
+    [SerializeField] private GameObject upgradeCanvas;
+    [SerializeField] private GameObject upgradeText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,13 +47,14 @@ public class UpgradeManager : MonoBehaviour
     {
         float newHealth = currentHealth += 50;
         PlayerPrefs.SetFloat("health", newHealth);
-        UpdateDamageText();
+        UpdateHealthText();
         UpdateGoldText();
     }
 
     public void CloseWindow()
     {
-        gameObject.SetActive(false);
+        upgradeCanvas.SetActive(false);
+        upgradeText.SetActive(true);
     }
 
     private void UpdateDamageText()

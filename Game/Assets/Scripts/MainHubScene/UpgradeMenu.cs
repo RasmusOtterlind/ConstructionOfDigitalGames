@@ -24,6 +24,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             uiElement.SetActive(false);
             upgradeCanvas.SetActive(true);
+            Time.timeScale = 0.0f;
         }
     }
 

@@ -12,9 +12,12 @@ public class EnemyStats : MonoBehaviour
 
     private float damage = 10;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (gameObject.transform.Find("HealthBar") == null)
         {
             GameObject objectHealthBar =

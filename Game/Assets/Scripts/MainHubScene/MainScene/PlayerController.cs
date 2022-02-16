@@ -140,21 +140,21 @@ public class PlayerController : MonoBehaviour
 
     public void HandlePainSound()
     {
-        int random = Random.Range(0, 3);
-        switch (random)
-        {
-            case 0:
-                audioSource.clip = hurt1;
-                break;
-            case 1:
-                audioSource.clip = hurt2;
-                break;
-            case 2:
-                audioSource.clip = hurt3;
-                break;
-        }
         if (!audioSource.isPlaying)
         {
+            int random = Random.Range(0, 3);
+            switch (random)
+            {
+                case 0:
+                    audioSource.clip = hurt1;
+                    break;
+                case 1:
+                    audioSource.clip = hurt2;
+                    break;
+                case 2:
+                    audioSource.clip = hurt3;
+                    break;
+            }
             audioSource.Play();
         }
     }

@@ -32,7 +32,10 @@ public class UpgradeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseWindow();
+        }
     }
 
     public void UpgradeDamage()
@@ -54,7 +57,7 @@ public class UpgradeManager : MonoBehaviour
     public void CloseWindow()
     {
         upgradeCanvas.SetActive(false);
-        upgradeText.SetActive(true);
+        Time.timeScale = 1.0f;
     }
 
     private void UpdateDamageText()

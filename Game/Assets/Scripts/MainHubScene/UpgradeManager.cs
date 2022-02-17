@@ -10,13 +10,15 @@ public class UpgradeManager : MonoBehaviour
     private float currentDamage;
     private float currentHealth;
     private int currentGold;
+    private int currentCost;
 
     [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI[] costTexts;
 
     [SerializeField] private GameObject upgradeCanvas;
-    [SerializeField] private GameObject upgradeText;
+    //[SerializeField] private GameObject upgradeText;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class UpgradeManager : MonoBehaviour
         currentDamage = PlayerPrefs.GetFloat("damage");
         currentHealth = PlayerPrefs.GetFloat("health");
         currentGold = PlayerPrefs.GetInt("gold");
+        currentCost = PlayerPrefs.GetInt("upgradeCost");
+        UpdateCostText();
         UpdateGoldText();
         UpdateDamageText();
         UpdateHealthText();
@@ -40,18 +44,30 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        float newDamage = currentDamage += 5;
-        PlayerPrefs.SetFloat("damage", newDamage);
-        UpdateDamageText();
-        UpdateGoldText();
+        if (currentGold >= currentCost)
+        {
+            currentGold -= currentCost;
+            currentCost = Mathf.RoundToInt(currentCost * 1.1f);
+            float newDamage = currentDamage += 5;
+            PlayerPrefs.SetFloat("damage", newDamage);
+            UpdateDamageText();
+            UpdateGoldText();
+            UpdateCostText();
+        }
     }
 
     public void UpgradeHealth()
     {
-        float newHealth = currentHealth += 50;
-        PlayerPrefs.SetFloat("health", newHealth);
-        UpdateHealthText();
-        UpdateGoldText();
+        if (currentGold >= currentCost)
+        {
+            currentGold -= currentCost;
+            currentCost = Mathf.RoundToInt(currentCost * 1.1f);
+            float newHealth = currentHealth += 50;
+            PlayerPrefs.SetFloat("health", newHealth);
+            UpdateHealthText();
+            UpdateGoldText();
+            UpdateCostText();
+        }
     }
 
     public void CloseWindow()
@@ -73,5 +89,12 @@ public class UpgradeManager : MonoBehaviour
     private void UpdateGoldText()
     {
         goldText.SetText("Gold: " + currentGold);
+    }
+    private void UpdateCostText()
+    {
+        foreach (TextMeshProUGUI costText in costTexts)
+        {
+            costText.SetText("Cost: " + currentCost);
+        }
     }
 }

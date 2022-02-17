@@ -403,7 +403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7486277884150171146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParkingLot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

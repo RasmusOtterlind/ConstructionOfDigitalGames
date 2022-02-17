@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        handleExistence();
     }
     
     private void FixedUpdate()
@@ -149,13 +149,16 @@ public class EnemyAI : MonoBehaviour
         return false;
     }
 
-    public void TakeDamage(float damage)
+    private void handleExistence()
     {
-        enemyStats.OnHitByBullet(damage);
-        if (enemyStats.getHealth() <= 0f)
+        HealthEntity healthEntity = GetComponent<HealthEntity>();
+        if (healthEntity != null)
         {
-            player.gameObject.GetComponent<PlayerController>().onEnemyKilled();
-            Destroy(gameObject);
+            if(healthEntity.health <= 0)
+            {
+                player.gameObject.GetComponent<PlayerController>().onEnemyKilled();
+                Destroy(gameObject);
+            }
         }
     }
 

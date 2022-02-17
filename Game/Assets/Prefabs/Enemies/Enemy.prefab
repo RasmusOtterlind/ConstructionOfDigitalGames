@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 4346898825704959664}
   - component: {fileID: 4346898825704959662}
   - component: {fileID: 4346898825704959665}
+  - component: {fileID: -6508952410826672142}
   - component: {fileID: -3501963897299195484}
   - component: {fileID: -3752919824072133704}
   m_Layer: 10
@@ -590,6 +591,8 @@ MonoBehaviour:
   desiredDistanceToPlayer: 5
   runningSpeed: 3
   detectionRange: 100
+  shootDetectionRange: 10
+  shootDelay: 1
   eyes: {fileID: 5142858261947021223}
   enemyShoot: {fileID: 4346898825704959665}
 --- !u!114 &4346898825704959665
@@ -610,6 +613,19 @@ MonoBehaviour:
   yUpperAim: 2
   muzzle: {fileID: 4346898825436230113}
   bulletPrefab: {fileID: 7337496254223716256, guid: b66ffd1e98822344c9499180db96ee0d, type: 3}
+--- !u!114 &-6508952410826672142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499895743443256746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047eed41f06676649a52c03bf213c023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!114 &-3501963897299195484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,10 +639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 541647907030583869, guid: 4f2aee5b54ac34142864342241e90635, type: 3}
-  health: 100
-  hurt1: {fileID: 8300000, guid: eaed94722f9b7c541947f8575e71a6d5, type: 3}
-  hurt2: {fileID: 8300000, guid: a963eb72a65c6a545982d16563dd08cb, type: 3}
-  hurt3: {fileID: 8300000, guid: a5f35be4809f386478642ada9d846f61, type: 3}
+  maxHealth: 100
 --- !u!82 &-3752919824072133704
 AudioSource:
   m_ObjectHideFlags: 0

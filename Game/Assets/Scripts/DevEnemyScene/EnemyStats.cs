@@ -8,16 +8,12 @@ public class EnemyStats : MonoBehaviour
 
     public GameObject healthBar;
     private Transform transformHealthBar;
-    public float maxHealth = 100f;
-    private float health;
 
     private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
-        audioSource = GetComponent<AudioSource>();
         if (gameObject.transform.Find("HealthBar") == null)
         {
             GameObject objectHealthBar =
@@ -37,13 +33,11 @@ public class EnemyStats : MonoBehaviour
     
     public void OnHitByBullet(float damageTaken)
     {
-        health -= damageTaken;
-        transformHealthBar.localScale = new Vector3(health / maxHealth, 1);
-        Debug.Log(health);
+        float health = GetComponent<HealthEntity>().health;
+        float startHealth = GetComponent<HealthEntity>().startHealth;   
+        transformHealthBar.localScale = new Vector3(health / startHealth, 1);
+      
     }
 
-    public float getHealth()
-    {
-        return health;
-    }
+   
 }

@@ -42,12 +42,14 @@ public class BasicBullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && !spawnedByPlayer)
         {
-            HealthEntity healthEntity = gameObject.GetComponent<HealthEntity>();
+            HealthEntity healthEntity = collision.collider.GetComponent<HealthEntity>();
             healthEntity.takeDamage(damage);
         }
         else if (collision.collider.CompareTag("Enemy"))
         {
-            collision.transform.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+            HealthEntity healthEntity = collision.collider.GetComponent<HealthEntity>();
+            Debug.Log(healthEntity == null);
+            healthEntity.takeDamage(damage);
         }
         GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * power);
         bounces--;

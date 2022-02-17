@@ -11,7 +11,7 @@ public class EnemyShoot : MonoBehaviour
     public float yLowAim = -0.5f;
     public float yUpperAim = 2.0f;
 
-    private float power = 15f;
+    public float power = 15f;
 
     private Transform muzzleTransform;
 

@@ -20,13 +20,17 @@ public class Mine : MonoBehaviour
     {
         if(explosionStarted && !GetComponent<AudioSource>().isPlaying) Destroy(gameObject);
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        explosionStarted = true;
-        ExplosionParticles();
-        ExplosionForce();
-        ExplosionSound();
-        Destroy(transform.GetChild(0).gameObject, 0.1f);
+        if(collision.gameObject.GetComponent<HealthEntity>() != null)
+        {
+            explosionStarted = true;
+            ExplosionParticles();
+            ExplosionForce();
+            ExplosionSound();
+            Destroy(transform.GetChild(0).gameObject, 0.1f);
+        }
     }
 
     private void ExplosionParticles() {

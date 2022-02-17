@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
             deadMenu.SetActive(true);
             showMenu = false;
             menu.SetActive(false);
-            Time.timeScale = 0.0f;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && !showDeadMenu)
         {

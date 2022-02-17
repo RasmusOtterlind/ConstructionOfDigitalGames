@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: -3501963897299195484}
   - component: {fileID: -3752919824072133704}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: Boss1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,7 +510,7 @@ Transform:
   m_GameObject: {fileID: 3499895743443256746}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5145685129650098062}
@@ -590,9 +590,9 @@ MonoBehaviour:
   capsuleCollider: {fileID: 4346898825704959664}
   desiredDistanceToPlayer: 5
   runningSpeed: 3
-  detectionRange: 20
+  detectionRange: 100
   shootDetectionRange: 10
-  shootDelay: 1
+  shootDelay: 0.5
   eyes: {fileID: 5142858261947021223}
   enemyShoot: {fileID: 4346898825704959665}
 --- !u!114 &4346898825704959665
@@ -607,10 +607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3499010ee5279d04db557764fc1d6d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xLowAim: -0.5
-  xUpperAim: 2
-  yLowAim: -0.5
-  yUpperAim: 2
+  xLowAim: -0.3
+  xUpperAim: 1.8
+  yLowAim: -0.3
+  yUpperAim: 1.8
   muzzle: {fileID: 4346898825436230113}
   bulletPrefab: {fileID: 7337496254223716256, guid: b66ffd1e98822344c9499180db96ee0d, type: 3}
 --- !u!114 &-6508952410826672142
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047eed41f06676649a52c03bf213c023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1000
   startHealth: 0
 --- !u!114 &-3501963897299195484
 MonoBehaviour:

@@ -9,8 +9,11 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     private void LateUpdate()
     {
-        Vector3 tempVector = focus.position;
-        tempVector += offset;
-        transform.position = tempVector;
+        if (focus)
+        {
+            Vector3 tempVector = focus.position;
+            tempVector += offset;
+            transform.position = tempVector;
+        }
     }
 }

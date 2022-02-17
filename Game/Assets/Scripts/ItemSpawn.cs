@@ -10,8 +10,6 @@ public class ItemSpawn : MonoBehaviour
     
     void Start()
     {
-
-        
         if(spawnChance > Random.Range(0f, 1f) && transform.parent.position != null)
         {
             GameObject spawnedPrefab = Instantiate(itemPrefabs[Random.Range(0, itemPrefabs.Length)], transform.parent.position + transform.position, Quaternion.identity);

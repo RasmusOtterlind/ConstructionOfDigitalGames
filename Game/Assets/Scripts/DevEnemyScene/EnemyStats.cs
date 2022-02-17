@@ -8,20 +8,20 @@ public class EnemyStats : MonoBehaviour
 
     public GameObject healthBar;
     private Transform transformHealthBar;
-    public float health = 100;
-
-    private float damage = 10;
+    public float maxHealth = 100f;
+    private float health;
 
     private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
         audioSource = GetComponent<AudioSource>();
         if (gameObject.transform.Find("HealthBar") == null)
         {
             GameObject objectHealthBar =
-                Instantiate(healthBar, gameObject.transform.position + Vector3.up*2, Quaternion.Euler(0f, -180f, 0f));
+                Instantiate(healthBar, gameObject.transform.position + Vector3.up*2*gameObject.transform.localScale.y, Quaternion.Euler(0f, -180f, 0f));
             objectHealthBar.transform.parent = gameObject.transform;
             transformHealthBar = objectHealthBar.transform.Find("Bar");
         }
@@ -38,7 +38,7 @@ public class EnemyStats : MonoBehaviour
     public void OnHitByBullet(float damageTaken)
     {
         health -= damageTaken;
-        transformHealthBar.localScale = new Vector3(health / 100f, 1);
+        transformHealthBar.localScale = new Vector3(health / maxHealth, 1);
         Debug.Log(health);
     }
 

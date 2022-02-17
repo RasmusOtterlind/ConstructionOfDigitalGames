@@ -15,7 +15,8 @@ public class EnemyAI : MonoBehaviour
     public float runningSpeed = 3f;
    
     public float detectionRange = 100f;
-    private float shootDetectionRange = 10f;
+    public float shootDetectionRange = 10f;
+    public float shootDelay = 1f;
     private Transform player;
 
     public Transform eyes;

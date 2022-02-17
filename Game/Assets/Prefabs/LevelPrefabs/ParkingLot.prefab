@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6242165755344196336}
   - component: {fileID: 2224578198893311245}
   - component: {fileID: 967435621596942483}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StoneFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7527817678006171509}
   - component: {fileID: 4529126039701127616}
   - component: {fileID: 6600894223145976766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 6383170652103975501}
   - component: {fileID: 8451010937238963993}
   - component: {fileID: 3879252635716774939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParkingLot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 3032698244596849060}
   - component: {fileID: 260567581549565758}
   - component: {fileID: 5496566136990328010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 7486277884150171146}
   m_Layer: 6
   m_Name: ParkingLot
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

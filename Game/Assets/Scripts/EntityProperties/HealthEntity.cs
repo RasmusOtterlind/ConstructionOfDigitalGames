@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HealthEntity : MonoBehaviour
 {
-    public float health;
-    public float startHealth;
+    public float health = 100f;
+    [HideInInspector] public float startHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -23,5 +23,9 @@ public class HealthEntity : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
+        if (GetComponent<EnemyStats>())
+        {
+            GetComponent<EnemyStats>().UpdateHealthBar();
+        }
     }
 }

@@ -31,10 +31,10 @@ public class EnemyStats : MonoBehaviour
         
     }
     
-    public void OnHitByBullet(float damageTaken)
+    public void UpdateHealthBar()
     {
         float health = GetComponent<HealthEntity>().health;
-        float startHealth = GetComponent<HealthEntity>().startHealth;   
+        float startHealth = GetComponent<HealthEntity>().startHealth;
         transformHealthBar.localScale = new Vector3(health / startHealth, 1);
       
     }

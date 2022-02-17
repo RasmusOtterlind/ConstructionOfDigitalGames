@@ -209,9 +209,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void onEnemyKilled()
+    public void onEnemyKilled(int goldValue)
     {
-        gold += 10;
+        gold += goldValue;
         txtGold.text = "Gold: " + gold;
     }
 

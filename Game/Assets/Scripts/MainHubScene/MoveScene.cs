@@ -8,6 +8,7 @@ public class MoveScene : MonoBehaviour
 {
 
     [SerializeField] private GameObject uiElement;
+    public int sceneToSwitchTo = 2;
     
     private bool isTrigger = false;
 
@@ -19,7 +20,7 @@ public class MoveScene : MonoBehaviour
     private void Update(){
         if (Input.GetKeyDown(KeyCode.E) && isTrigger)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(sceneToSwitchTo);
         }
     }
 

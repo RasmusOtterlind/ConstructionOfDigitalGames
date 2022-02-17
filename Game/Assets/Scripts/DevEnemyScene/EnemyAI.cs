@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
 
     private EnemyStats enemyStats;
 
+    public int goldValue = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -157,7 +159,7 @@ public class EnemyAI : MonoBehaviour
         {
             if(healthEntity.health <= 0)
             {
-                player.gameObject.GetComponent<PlayerController>().onEnemyKilled();
+                player.gameObject.GetComponent<PlayerController>().onEnemyKilled(goldValue);
                 Destroy(gameObject);
             }
         }

@@ -9,10 +9,26 @@ public class Bomb : MonoBehaviour
     public float damagePercentage = 0.10f;
 
     private bool explosionStarted = false;
+
+    public AudioClip whistlingClip;
+    public AudioClip explostionClip;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * 1000, out hit, 1000);
+        if(!(hit.transform.gameObject.tag == "Player"))
+        {
+            Destroy(gameObject);
+        }
+     
+        if (whistlingClip != null)
+        {
+            GetComponent<AudioSource>().clip = whistlingClip;
+            GetComponent<AudioSource>().loop = true;
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     // Update is called once per frame
@@ -20,6 +36,12 @@ public class Bomb : MonoBehaviour
     {
         if(explosionStarted && !GetComponent<AudioSource>().isPlaying) Destroy(gameObject);
     }
+
+    private void FixedUpdate()
+    {
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         explosionStarted = true;
@@ -54,6 +76,8 @@ public class Bomb : MonoBehaviour
 
     private void ExplosionSound()
     {
+        GetComponent<AudioSource>().clip = explostionClip;
+        GetComponent<AudioSource>().loop = false;
         GetComponent<AudioSource>().Play();
     }
 

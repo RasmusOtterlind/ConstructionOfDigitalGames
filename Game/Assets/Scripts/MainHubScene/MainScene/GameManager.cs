@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private float defaultDamage = 10;
     private float defaultHealth = 100;
     private int defaultGold = 0;
+    private int defaultCost = 100;
 
     private bool showMenu = false;
     private bool showDeadMenu = false;
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
         if (!PlayerPrefs.HasKey("gold"))
         {
             PlayerPrefs.SetInt("gold", defaultGold);
+        }
+
+        if (!PlayerPrefs.HasKey("upgradeCost"))
+        {
+            PlayerPrefs.SetInt("upgradeCost", defaultCost);
         }
 
         menu.SetActive(showMenu);

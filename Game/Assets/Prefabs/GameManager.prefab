@@ -2575,6 +2575,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6614478286573809467}
     m_Modifications:
+    - target: {fileID: -7724196727208853916, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 39eb2da860fbcce4d9672143439a2207, type: 3}
+    - target: {fileID: -7724196727208853916, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8273104408118092542, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
       propertyPath: m_Name
       value: SimplePlayer

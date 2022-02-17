@@ -10,7 +10,7 @@ public class BasicBullet : MonoBehaviour
     public float life = 3;
     private float lifeTimer;
 
-    public float damage = 10;
+    private float damage = 10;
 
     public bool spawnedByPlayer = false;
 
@@ -28,14 +28,19 @@ public class BasicBullet : MonoBehaviour
         audioSource.Play();
     }
 
+    void Awake()
+    {
+        damage = PlayerPrefs.GetFloat("damage");
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(Time.time > lifeTimer + life)
         {
-            HideGameObject();
+            Destroy(gameObject);
         }
-        HandleSound();
+        //HandleSound();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -51,12 +56,15 @@ public class BasicBullet : MonoBehaviour
             Debug.Log(healthEntity == null);
             healthEntity.takeDamage(damage);
         }
-        GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * power);
+        Destroy(gameObject);
+
+        /*GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * power);
         bounces--;
         if (bounces < 1)
         {
             HideGameObject();
         }
+        */
     }
 
     private void HandleSound()

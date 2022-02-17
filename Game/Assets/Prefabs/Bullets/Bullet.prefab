@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7969495989486479141
 Transform:
   m_ObjectHideFlags: 0
@@ -228,9 +228,7 @@ MonoBehaviour:
   bounces: 2
   hitPoint: {x: 0, y: 0, z: 0}
   life: 3
-  damage: 10
   spawnedByPlayer: 0
-  soundRadius: 15
 --- !u!96 &1300210622364506010
 TrailRenderer:
   serializedVersion: 2
@@ -346,7 +344,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7337496254223716256}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 39eb2da860fbcce4d9672143439a2207, type: 3}

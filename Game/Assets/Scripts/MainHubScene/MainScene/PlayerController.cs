@@ -211,8 +211,11 @@ public class PlayerController : MonoBehaviour
             hitPoint += new Vector3(Random.Range(-recoil, recoil), Random.Range(-recoil, recoil), 0) *0.05f;
             GameObject tempBullet = Instantiate(bullet, muzzleTransform.position, offsetRot);
             tempBullet.GetComponent<BasicBullet>().spawnedByPlayer = true;
-            tempBullet.GetComponent<BasicBullet>().damage = damage;
+            //tempBullet.GetComponent<BasicBullet>().damage = damage;
             tempBullet.GetComponent<BasicBullet>().hitPoint = hitPoint;
+
+            GetComponent<AudioSource>().Play(0);
+
             shootCooldown = 0;
 
             if(recoil < maxRecoil)

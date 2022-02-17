@@ -2640,6 +2640,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 329061810}
     - target: {fileID: 9083357415260306583, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+      propertyPath: flashlight
+      value: 
+      objectReference: {fileID: 710180178797741529}
+    - target: {fileID: 9083357415260306583, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 6614478286573809465}
@@ -2653,6 +2657,11 @@ PrefabInstance:
       objectReference: {fileID: 1160634102124040376}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+--- !u!1 &710180178797741529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3179216540337381418, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+  m_PrefabInstance: {fileID: 2721803124042393075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6647842505720126903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8756167610760476740, guid: 33e90132ca6906f418e5956c85c51287, type: 3}

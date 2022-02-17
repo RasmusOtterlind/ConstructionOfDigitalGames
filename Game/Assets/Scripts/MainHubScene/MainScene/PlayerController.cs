@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rigidbody;
 
+    [SerializeField] private GameObject flashlight;
+    private bool isFlashlightOn = false;
+
     public GameObject bullet;
     public Transform muzzleTransform;
 
@@ -64,7 +67,8 @@ public class PlayerController : MonoBehaviour
 
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
-        
+
+        flashlight.SetActive(isFlashlightOn);
     }
 
     // Update is called once per frame
@@ -83,9 +87,19 @@ public class PlayerController : MonoBehaviour
         {
             LowerRecoil();
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ToggleFlashlight();
+        }
         
         HandleStats();
         HandleUI();
+    }
+
+    private void ToggleFlashlight()
+    {
+        flashlight.SetActive(!isFlashlightOn);
+        isFlashlightOn = !isFlashlightOn;
     }
 
     private void LowerRecoil()

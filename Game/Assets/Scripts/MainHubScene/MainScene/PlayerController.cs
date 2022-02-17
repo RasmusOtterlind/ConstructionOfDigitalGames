@@ -162,8 +162,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
-        canJump = Physics.CheckSphere(groundChecker.position, 0.1f, groundMask, QueryTriggerInteraction.Ignore)
-                || Physics.CheckSphere(groundChecker.position, 0.1f, enemyMask, QueryTriggerInteraction.Ignore);
+        canJump = Physics.CheckSphere(groundChecker.position, 0.2f, groundMask, QueryTriggerInteraction.Ignore)
+                || Physics.CheckSphere(groundChecker.position, 0.2f, enemyMask, QueryTriggerInteraction.Ignore);
         if (jump && canJump)
         {
             rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);

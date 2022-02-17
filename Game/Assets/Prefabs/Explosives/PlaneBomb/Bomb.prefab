@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 229812711870002857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0.88}
-  m_LocalScale: {x: 0.99999976, y: 1, z: 100}
+  m_LocalScale: {x: 0.99999976, y: 1, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2875469279776859145}
@@ -5091,6 +5091,8 @@ MonoBehaviour:
   explosionForce: 500
   explosionRange: 5
   damagePercentage: 0.1
+  whistlingClip: {fileID: 8300000, guid: f9b7b02a52c1c5c40a8b9663b0017819, type: 3}
+  explostionClip: {fileID: 8300000, guid: 446a4088347862548b36dec70d8a7064, type: 3}
 --- !u!82 &7142237845416937239
 AudioSource:
   m_ObjectHideFlags: 0

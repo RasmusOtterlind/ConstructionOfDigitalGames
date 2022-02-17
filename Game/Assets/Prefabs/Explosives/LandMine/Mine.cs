@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    public float explosionForce = 700;
-    public float explosionRange = 50;
+    public float explosionForce = 500;
+    public float explosionRange = 10;
+    public float damagePercentage = 0.1f;
 
     private bool explosionStarted = false;
     // Start is called before the first frame update
@@ -39,12 +40,15 @@ public class Mine : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRange);
         foreach (Collider collider in colliders)
         {
-           Rigidbody rigidbody = collider.GetComponent<Rigidbody>();
-            if (rigidbody != null)
+            HealthEntity healthEntity = collider.GetComponent<HealthEntity>();
+            if (healthEntity != null)
             {
-                rigidbody.AddExplosionForce(explosionForce, transform.position + new Vector3(0, -10, 0), explosionRange);
+                healthEntity.takeDamage(healthEntity.startHealth * damagePercentage);
             }
         }
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody.AddExplosionForce(explosionForce, transform.position, explosionRange);
+
     }
 
     private void ExplosionSound()

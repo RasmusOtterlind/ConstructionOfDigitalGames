@@ -5088,8 +5088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ea4706c5184c04dbb66bb9af9d046e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 1400
-  explosionRange: 50
+  explosionForce: 500
+  explosionRange: 5
+  damagePercentage: 0.1
 --- !u!82 &7142237845416937239
 AudioSource:
   m_ObjectHideFlags: 0

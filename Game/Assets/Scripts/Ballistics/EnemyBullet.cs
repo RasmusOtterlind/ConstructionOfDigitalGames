@@ -27,6 +27,7 @@ public class EnemyBullet : MonoBehaviour
             HealthEntity healthEntity = collision.collider.GetComponent<HealthEntity>();
             if (healthEntity != null)
             {
+                print("Damage");
                 healthEntity.takeDamage(damage);
             }
             HideGameObject();

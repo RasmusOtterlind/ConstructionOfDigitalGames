@@ -39,7 +39,6 @@ public class EnemyStats : MonoBehaviour
     {
         health -= damageTaken;
         transformHealthBar.localScale = new Vector3(health / 100f, 1);
-        Debug.Log(health);
     }
 
     public float getHealth()

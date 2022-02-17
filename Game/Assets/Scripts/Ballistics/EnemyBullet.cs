@@ -24,9 +24,10 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.collider.CompareTag("Player") || collision.collider.gameObject.layer == 6)
         {
-            if (collision.transform.gameObject.GetComponent<PlayerController>())
+            HealthEntity healthEntity = collision.collider.GetComponent<HealthEntity>();
+            if (healthEntity != null)
             {
-                collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+                healthEntity.takeDamage(damage);
             }
             HideGameObject();
         }

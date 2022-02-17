@@ -952,8 +952,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6647842505720126903}
-  bombIntervall: 0
-  randomIntervall: 0
   airPlaneBomb: {fileID: 5802620479176905573, guid: 6bed5df494a08fe45a53877e5e1c9dd6, type: 3}
 --- !u!1 &3291095814689903319
 GameObject:

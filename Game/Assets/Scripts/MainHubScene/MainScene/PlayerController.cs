@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-
     public GameObject gameManager;
 
     private float input = 0f;
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
     public Transform muzzleTransform;
 
     //Player Stats
-    public float health;
     public float damage;
     public int gold;
     
@@ -52,15 +50,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI txtHealth;
     public TextMeshProUGUI txtDamage;
 
-    public AudioClip hurt1;
-    public AudioClip hurt2;
-    public AudioClip hurt3;
-
-    private AudioSource audioSource;
-
     private void Awake()
     {
-        health = PlayerPrefs.GetFloat("health");
         damage = PlayerPrefs.GetFloat("damage");
         gold = PlayerPrefs.GetInt("gold");
     }
@@ -68,9 +59,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-
-        health = PlayerPrefs.GetFloat("health");
         damage = PlayerPrefs.GetFloat("damage");
         gold = PlayerPrefs.GetInt("gold");
 
@@ -113,6 +101,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleUI()
     {
+        float health = GetComponent<HealthEntity>().health;
+       
         if (health < 0)
         {
             health = 0;
@@ -124,6 +114,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleStats()
     {
+        float health = GetComponent<HealthEntity>().health;
+
         if (health <= 0)
         {
             health = 0;
@@ -132,33 +124,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    public void TakeDamage(float damageTaken)
-    {
-        health -= damageTaken;
-        HandlePainSound();
-    }
-
-    public void HandlePainSound()
-    {
-        if (!audioSource.isPlaying)
-        {
-            int random = Random.Range(0, 3);
-            switch (random)
-            {
-                case 0:
-                    audioSource.clip = hurt1;
-                    break;
-                case 1:
-                    audioSource.clip = hurt2;
-                    break;
-                case 2:
-                    audioSource.clip = hurt3;
-                    break;
-            }
-            audioSource.Play();
-        }
-    }
-
     private void LateUpdate()
     {
         HandleAiming();
@@ -177,7 +142,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-       
         HandleDirection();
         HandleAnimation();  
         HandleJump();  

@@ -42,7 +42,8 @@ public class BasicBullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && !spawnedByPlayer)
         {
-            collision.transform.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+            HealthEntity healthEntity = gameObject.GetComponent<HealthEntity>();
+            healthEntity.takeDamage(damage);
         }
         else if (collision.collider.CompareTag("Enemy"))
         {

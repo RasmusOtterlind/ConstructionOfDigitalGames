@@ -21,6 +21,10 @@ public class EnemyStats : MonoBehaviour
             objectHealthBar.transform.parent = gameObject.transform;
             transformHealthBar = objectHealthBar.transform.Find("Bar");
         }
+        else
+        {
+            transformHealthBar = gameObject.transform.Find("HealthBar").transform.Find("Bar");
+        }
 
         transformHealthBar.localScale = new Vector3(1, 1);
     }

@@ -123,7 +123,7 @@ public class EnemyAI : MonoBehaviour
 
         canShoot = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(shootDelay);
 
         enemyShoot.Shoot(target);
 
@@ -136,6 +136,7 @@ public class EnemyAI : MonoBehaviour
         targetOffsetPosition.y -= 0.5f;
 
         Vector3 direction = targetOffsetPosition - transform.position;
+        direction.y -= transform.localScale.y - target.localScale.y;
 
         RaycastHit hit;
         Debug.DrawRay(eyes.position, direction, Color.red);

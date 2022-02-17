@@ -23,8 +23,8 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0
-  m_AmbientMode: 3
+  m_AmbientIntensity: 0.2
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
   m_HaloStrength: 0.5
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0
+  m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 582648339}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
+  m_IndirectSpecularColor: {r: 0.070539005, g: 0.35366908, b: 0.96991307, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11801,30 +11801,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1383831435}
     m_Modifications:
-    - target: {fileID: 1457885919246198114, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.069724575
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457885919246198114, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457885919246198114, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.086712636
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457885919246198114, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9976034
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457885919246198114, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.06919136
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457885919246198114, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -7.935
-      objectReference: {fileID: 0}
     - target: {fileID: 6929845269237576476, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
       propertyPath: m_RootOrder
       value: 0

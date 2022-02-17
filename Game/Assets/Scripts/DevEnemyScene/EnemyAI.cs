@@ -56,7 +56,6 @@ public class EnemyAI : MonoBehaviour
             return;
         }
         float xDistance = player.transform.position.x - capsuleCollider.transform.position.x;
-        float yDistance = player.transform.position.y - capsuleCollider.transform.position.y;
         
         if (Mathf.Abs(xDistance) > 0.1f)
         {

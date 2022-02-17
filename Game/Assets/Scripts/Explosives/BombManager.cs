@@ -19,7 +19,7 @@ public class BombManager : MonoBehaviour
     void Update()
     {
         if(Time.time > lastBomb + randomTimeAddition) {
-            Instantiate(airPlaneBomb, player.position + new Vector3(0, 150, 0), Quaternion.Euler(90f, 0f, 0f));
+            Instantiate(airPlaneBomb, player.position + new Vector3(0, 75, 0), Quaternion.Euler(90f, 0f, 0f));
             randomTimeAddition = Random.Range(3, 15f);
             lastBomb = Time.time;   
         }

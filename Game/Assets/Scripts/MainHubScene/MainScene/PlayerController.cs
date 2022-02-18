@@ -1,10 +1,12 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -87,7 +89,6 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
         }
-        HandleFallDamage();
         HandleParachute();
         if (Input.GetButton("Fire1"))
         {
@@ -134,23 +135,6 @@ public class PlayerController : MonoBehaviour
     {
         Destroy(openedParachute);
         GetComponent<Rigidbody>().useGravity = true;
-    }
-
-    private void HandleFallDamage()
-    {
-        if (falldamage)
-        {
-            GetComponent<HealthEntity>().takeDamage(10);
-            falldamage = false;
-        }
-
-        if (!jump)
-        {
-            if (velocity.y < -7)
-            {
-                falldamage = true;
-            }
-        }
     }
 
     private void ToggleFlashlight()
@@ -235,11 +219,28 @@ public class PlayerController : MonoBehaviour
     {
         canJump = Physics.CheckSphere(groundChecker.position, 0.2f, groundMask, QueryTriggerInteraction.Ignore)
                 || Physics.CheckSphere(groundChecker.position, 0.2f, enemyMask, QueryTriggerInteraction.Ignore);
+
+        if (canJump)
+        {
+            removeParachute();
+            if (falldamage)
+            {
+                GetComponent<HealthEntity>().takeDamage(10);
+                falldamage = false;
+            }
+        }
+        else
+        {
+            if (velocity.y < -7)
+            {
+                falldamage = true;
+            }
+        }
         if (jump && canJump)
         {
             rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
             jump = false;
-            removeParachute();
+            falldamage = false;
         }
     }
 

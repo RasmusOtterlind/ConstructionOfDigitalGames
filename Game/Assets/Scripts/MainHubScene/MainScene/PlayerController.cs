@@ -242,6 +242,14 @@ public class PlayerController : MonoBehaviour
         animator.SetLookAtPosition(targetTransform.position);
     }
 
-
+    public void ResetPlayer()
+    {
+        PlayerPrefs.SetFloat("health", 100);
+        PlayerPrefs.SetFloat("damage", 10);
+        PlayerPrefs.SetInt("gold", 0);
+        txtGold.text = "Gold: " + gold;
+        txtDamage.text = "Damage: " + damage;
+        txtHealth.text = "Health: " + GetComponent<HealthEntity>().health;
+    }
 
 }

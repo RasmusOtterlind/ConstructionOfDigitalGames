@@ -90,4 +90,5 @@ public class GameManager : MonoBehaviour
         menu.SetActive(false);
         Time.timeScale = 1.0f;
     }
+    
 }

@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
 
+    public bool falldamage = false;
+
+    public Vector3 velocity;
 
     //Used for aiming
     public LayerMask aimMask;
@@ -74,10 +77,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        velocity = gameObject.GetComponent<Rigidbody>().velocity;
         input = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             jump = true;
+        }
+        if (falldamage)
+        {
+            GetComponent<HealthEntity>().takeDamage(10);
+            falldamage = false;
+        }
+
+        if (!jump)
+        {
+            if (velocity.y < -7)
+            {
+                falldamage = true;
+            }
         }
         if (Input.GetButton("Fire1"))
         {
@@ -182,6 +199,7 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
             jump = false;
+            
         }
     }
 

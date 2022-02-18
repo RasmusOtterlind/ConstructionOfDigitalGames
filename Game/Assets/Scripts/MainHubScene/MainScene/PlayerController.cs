@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 hitPoint;
     private Vector3 deltaVector;
     public float fireRate = 4;
-    private float recoilIncrease = 0.2f;
-    private float maxRecoil = 3f;
+    private float recoilIncrease = 0.01f;
+    private float maxRecoil = 1f;
 
     public Transform groundChecker;
     public LayerMask groundMask;

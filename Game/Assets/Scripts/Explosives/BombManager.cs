@@ -18,7 +18,7 @@ public class BombManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > lastBomb + randomTimeAddition) {
+        if(Time.time > lastBomb + randomTimeAddition && player != null) {
             Instantiate(airPlaneBomb, player.position + new Vector3(0, 75, 0), Quaternion.Euler(90f, 0f, 0f));
             randomTimeAddition = Random.Range(3, 15f);
             lastBomb = Time.time;   

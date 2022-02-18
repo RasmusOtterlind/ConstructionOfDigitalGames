@@ -23,7 +23,7 @@ public class Mine : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<HealthEntity>() != null)
+        if(collision.gameObject.GetComponent<HealthEntity>() != null || collision.collider.gameObject.layer == 8)
         {
             explosionStarted = true;
             ExplosionParticles();

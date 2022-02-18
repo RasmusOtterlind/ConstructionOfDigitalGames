@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3499895743443256746, guid: bf6b21d350976154ebc72e3262d93d9d, type: 3}
-  spawnChance: 0.9
+  spawnChance: 0.5

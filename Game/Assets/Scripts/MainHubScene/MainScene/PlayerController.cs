@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 hitPoint;
     private Vector3 deltaVector;
     public float fireRate = 4;
-    private float recoilIncrease = 0.2f;
-    private float maxRecoil = 3f;
+    private float recoilIncrease = 0.01f;
+    private float maxRecoil = 1f;
 
     public Transform groundChecker;
     public LayerMask groundMask;
@@ -214,7 +214,9 @@ public class PlayerController : MonoBehaviour
             //tempBullet.GetComponent<BasicBullet>().damage = damage;
             tempBullet.GetComponent<BasicBullet>().hitPoint = hitPoint;
 
-            GetComponent<AudioSource>().Play();
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.pitch = Random.Range(0.90f, 1.10f);
+            audioSource.Play();
 
             shootCooldown = 0;
 
@@ -242,6 +244,14 @@ public class PlayerController : MonoBehaviour
         animator.SetLookAtPosition(targetTransform.position);
     }
 
-
+    public void ResetPlayer()
+    {
+        PlayerPrefs.SetFloat("health", 100);
+        PlayerPrefs.SetFloat("damage", 10);
+        PlayerPrefs.SetInt("gold", 0);
+        txtGold.text = "Gold: " + gold;
+        txtDamage.text = "Damage: " + damage;
+        txtHealth.text = "Health: " + GetComponent<HealthEntity>().health;
+    }
 
 }

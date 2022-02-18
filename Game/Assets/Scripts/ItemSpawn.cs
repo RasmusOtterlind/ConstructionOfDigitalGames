@@ -6,7 +6,7 @@ public class ItemSpawn : MonoBehaviour
 {
    
     public GameObject[] itemPrefabs;
-    public float spawnChance = 0.5f;
+    public float spawnChance = 1f;
     
     void Start()
     {

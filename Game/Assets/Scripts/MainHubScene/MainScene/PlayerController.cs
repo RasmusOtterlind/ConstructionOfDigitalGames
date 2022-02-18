@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
     public float damage;
     public int gold;
     
+    
+    //Inventory
+    public GameObject parachute;
+    
     // UI components
     public Slider healthSlider;
     public GameObject inventory;
@@ -83,19 +87,8 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
         }
-        if (falldamage)
-        {
-            GetComponent<HealthEntity>().takeDamage(10);
-            falldamage = false;
-        }
-
-        if (!jump)
-        {
-            if (velocity.y < -7)
-            {
-                falldamage = true;
-            }
-        }
+        HandleFallDamage();
+        HandleParachute();
         if (Input.GetButton("Fire1"))
         {
             Shoot();
@@ -111,6 +104,53 @@ public class PlayerController : MonoBehaviour
         
         HandleStats();
         HandleUI();
+    }
+
+    private GameObject openedParachute;
+    
+    private void HandleParachute()
+    {
+        if (Input.GetKeyDown("v"))
+        {
+            if (openedParachute == null)
+            {
+                openedParachute = Instantiate(parachute, transform.position+Vector3.up, Quaternion.identity);
+                openedParachute.transform.parent = gameObject.transform;
+                openedParachute.transform.Rotate(new Vector3(0, 90, 0));
+            }
+            else
+            {
+                Destroy(openedParachute);
+                GetComponent<Rigidbody>().useGravity = true;
+            }
+        }else if (openedParachute != null && GetComponent<Rigidbody>().velocity.y <= 0.5f)
+        {
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, -2, GetComponent<Rigidbody>().velocity.z);
+        }
+    }
+
+    private void removeParachute()
+    {
+        Destroy(openedParachute);
+        GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    private void HandleFallDamage()
+    {
+        if (falldamage)
+        {
+            GetComponent<HealthEntity>().takeDamage(10);
+            falldamage = false;
+        }
+
+        if (!jump)
+        {
+            if (velocity.y < -7)
+            {
+                falldamage = true;
+            }
+        }
     }
 
     private void ToggleFlashlight()
@@ -199,7 +239,7 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
             jump = false;
-            
+            removeParachute();
         }
     }
 

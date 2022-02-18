@@ -214,7 +214,9 @@ public class PlayerController : MonoBehaviour
             //tempBullet.GetComponent<BasicBullet>().damage = damage;
             tempBullet.GetComponent<BasicBullet>().hitPoint = hitPoint;
 
-            GetComponent<AudioSource>().Play();
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.pitch = Random.Range(0.90f, 1.10f);
+            audioSource.Play();
 
             shootCooldown = 0;
 

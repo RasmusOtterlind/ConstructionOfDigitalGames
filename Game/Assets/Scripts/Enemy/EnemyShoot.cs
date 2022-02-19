@@ -12,6 +12,7 @@ public class EnemyShoot : MonoBehaviour
     public float yUpperAim = 2.0f;
 
     public float power = 15f;
+    public float damage = 10f;
 
     private Transform muzzleTransform;
 
@@ -34,6 +35,7 @@ public class EnemyShoot : MonoBehaviour
         float yAim = Random.Range(yLowAim, yUpperAim);
 
         bullet = Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
+        bullet.GetComponent<EnemyBullet>().damage = damage;
         bulletRigidBody = bullet.GetComponent<Rigidbody>();
         bulletRigidBody.AddForce(((target.position + new Vector3(xAim, yAim, 0)) - bullet.GetComponent<Transform>().position).normalized * power, ForceMode.Impulse);
         Destroy(bullet, 3f);

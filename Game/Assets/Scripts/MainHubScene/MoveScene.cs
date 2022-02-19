@@ -20,6 +20,10 @@ public class MoveScene : MonoBehaviour
     private void Update(){
         if (Input.GetKeyDown(KeyCode.E) && isTrigger)
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            PlayerPrefs.SetInt("gold", player.GetComponent<PlayerController>().gold);
+            player.GetComponent<HealthEntity>().health = player.GetComponent<HealthEntity>().startHealth;
+            player.GetComponent<PlayerController>().damage = PlayerPrefs.GetFloat("damage");
             SceneManager.LoadScene(sceneToSwitchTo);
         }
     }

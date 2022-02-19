@@ -24,6 +24,7 @@ public class HeliTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             helicopter.GetComponent<FlyAway>().ToggleEvent();
+            gameObject.SetActive(false);
         }
     }
 }

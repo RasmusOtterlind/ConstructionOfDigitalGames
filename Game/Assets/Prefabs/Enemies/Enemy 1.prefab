@@ -644,6 +644,8 @@ MonoBehaviour:
   xUpperAim: 2
   yLowAim: -0.5
   yUpperAim: 2
+  power: 50
+  damage: 25
   muzzle: {fileID: 445230937}
   bulletPrefab: {fileID: 7337496254223716256, guid: b66ffd1e98822344c9499180db96ee0d, type: 3}
 --- !u!114 &-6508952410826672142
@@ -658,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047eed41f06676649a52c03bf213c023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 150
   startHealth: 0
 --- !u!114 &-3501963897299195484
 MonoBehaviour:

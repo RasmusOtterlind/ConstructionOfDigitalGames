@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void HandleUI()
+    public void HandleUI()
     {
         float health = GetComponent<HealthEntity>().health;
        
@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
         healthSlider.value = health / 100f;
         txtHealth.text = "Health: " + health;
         txtDamage.text = "Damage: " + damage;
+        txtGold.text = "Gold: " + gold;
     }
 
     private void HandleStats()

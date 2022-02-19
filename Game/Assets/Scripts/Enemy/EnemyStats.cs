@@ -8,6 +8,8 @@ public class EnemyStats : MonoBehaviour
 
     public GameObject healthBar;
     private Transform transformHealthBar;
+    private float health;
+    private float startHealth;
 
     private AudioSource audioSource;
 
@@ -27,6 +29,9 @@ public class EnemyStats : MonoBehaviour
         }
 
         transformHealthBar.localScale = new Vector3(1, 1);
+
+        health = GetComponent<HealthEntity>().health;
+        startHealth = health;
     }
 
     // Update is called once per frame
@@ -37,10 +42,8 @@ public class EnemyStats : MonoBehaviour
     
     public void UpdateHealthBar()
     {
-        float health = GetComponent<HealthEntity>().health;
-        float startHealth = GetComponent<HealthEntity>().startHealth;
-        transformHealthBar.localScale = new Vector3(health / startHealth, 1);
-      
+        health = GetComponent<HealthEntity>().health;
+        transformHealthBar.localScale = new Vector3(health / startHealth, 1); 
     }
 
    

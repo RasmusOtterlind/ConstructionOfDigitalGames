@@ -510,7 +510,7 @@ Transform:
   m_GameObject: {fileID: 3499895743443256746}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5145685129650098062}
@@ -588,13 +588,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   capsuleCollider: {fileID: 4346898825704959664}
-  desiredDistanceToPlayer: 5
-  runningSpeed: 3
+  desiredDistanceToPlayer: 10
+  runningSpeed: 5
   detectionRange: 100
-  shootDetectionRange: 10
-  shootDelay: 0.5
+  shootDetectionRange: 20
+  shootDelay: 0.3
   eyes: {fileID: 5142858261947021223}
   enemyShoot: {fileID: 4346898825704959665}
+  goldValue: 10
 --- !u!114 &4346898825704959665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,10 +608,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3499010ee5279d04db557764fc1d6d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xLowAim: -0.3
-  xUpperAim: 1.8
-  yLowAim: -0.3
-  yUpperAim: 1.8
+  xLowAim: -0.1
+  xUpperAim: 1.5
+  yLowAim: -0.1
+  yUpperAim: 1.5
+  power: 25
+  damage: 35
   muzzle: {fileID: 4346898825436230113}
   bulletPrefab: {fileID: 7337496254223716256, guid: b66ffd1e98822344c9499180db96ee0d, type: 3}
 --- !u!114 &-6508952410826672142

@@ -10,8 +10,11 @@ public class HealthEntity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = PlayerPrefs.GetFloat("health", 100);
-        startHealth = health;
+        if (gameObject.CompareTag("Player"))
+        {
+            health = PlayerPrefs.GetFloat("health", 100);
+            startHealth = health;
+        }
     }
 
     // Update is called once per frame

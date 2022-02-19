@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    private float damage = 10;
+    public float damage = 10;
     private bool destroy = false;
     private AudioSource audioSource;
     // Start is called before the first frame update

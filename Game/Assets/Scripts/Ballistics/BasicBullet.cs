@@ -10,7 +10,7 @@ public class BasicBullet : MonoBehaviour
     public float life = 3;
     private float lifeTimer;
 
-    private float damage = 10;
+    private float damage;
 
     public bool spawnedByPlayer = false;
 
@@ -30,11 +30,6 @@ public class BasicBullet : MonoBehaviour
         */
     }
 
-    void Awake()
-    {
-        damage = PlayerPrefs.GetFloat("damage");
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -47,6 +42,7 @@ public class BasicBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        damage = PlayerPrefs.GetFloat("damage");
         if (collision.collider.CompareTag("Player") && !spawnedByPlayer)
         {
             HealthEntity healthEntity = collision.collider.GetComponent<HealthEntity>();

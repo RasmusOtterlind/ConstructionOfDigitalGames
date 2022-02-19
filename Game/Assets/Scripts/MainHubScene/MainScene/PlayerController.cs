@@ -154,15 +154,16 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void HandleUI()
+    private void HandleUI()
     {
         float health = GetComponent<HealthEntity>().health;
+        float maxHealth = GetComponent<HealthEntity>().startHealth;
        
         if (health < 0)
         {
             health = 0;
         }
-        healthSlider.value = health / 100f;
+        healthSlider.value = health / maxHealth;
         txtHealth.text = "Health: " + health;
         txtDamage.text = "Damage: " + damage;
         txtGold.text = "Gold: " + gold;
@@ -312,6 +313,13 @@ public class PlayerController : MonoBehaviour
         txtGold.text = "Gold: " + gold;
         txtDamage.text = "Damage: " + damage;
         txtHealth.text = "Health: " + GetComponent<HealthEntity>().health;
+    }
+
+    public void FetchStatsAfterUpgrade()
+    {
+        gold = PlayerPrefs.GetInt("gold");
+        damage = PlayerPrefs.GetFloat("damage");
+        GetComponent<HealthEntity>().health = PlayerPrefs.GetFloat("health");
     }
 
 }

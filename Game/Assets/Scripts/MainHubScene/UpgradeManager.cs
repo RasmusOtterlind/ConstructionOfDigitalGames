@@ -33,6 +33,18 @@ public class UpgradeManager : MonoBehaviour
         UpdateHealthText();
     }
 
+    private void Awake()
+    {
+        currentDamage = PlayerPrefs.GetFloat("damage");
+        currentHealth = PlayerPrefs.GetFloat("health");
+        currentGold = PlayerPrefs.GetInt("gold");
+        currentCost = PlayerPrefs.GetInt("upgradeCost");
+        UpdateCostText();
+        UpdateGoldText();
+        UpdateDamageText();
+        UpdateHealthText();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,12 +59,12 @@ public class UpgradeManager : MonoBehaviour
         if (currentGold >= currentCost)
         {
             currentGold -= currentCost;
+            PlayerPrefs.SetInt("gold", currentGold);
             currentCost = Mathf.RoundToInt(currentCost * 1.1f);
+            PlayerPrefs.SetInt("upgradeCost", currentCost);
             float newDamage = currentDamage += 5;
             PlayerPrefs.SetFloat("damage", newDamage);
-            UpdateDamageText();
-            UpdateGoldText();
-            UpdateCostText();
+            UpdateUI();
         }
     }
 
@@ -61,13 +73,23 @@ public class UpgradeManager : MonoBehaviour
         if (currentGold >= currentCost)
         {
             currentGold -= currentCost;
+            PlayerPrefs.SetInt("gold", currentGold);
             currentCost = Mathf.RoundToInt(currentCost * 1.1f);
+            PlayerPrefs.SetInt("upgradeCost", currentCost);
             float newHealth = currentHealth += 50;
             PlayerPrefs.SetFloat("health", newHealth);
-            UpdateHealthText();
-            UpdateGoldText();
-            UpdateCostText();
+            UpdateUI();
         }
+    }
+
+    private void UpdateUI()
+    {
+        UpdateDamageText();
+        UpdateCostText();
+        UpdateGoldText();
+        UpdateHealthText();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerController>().FetchStatsAfterUpgrade();
     }
 
     public void CloseWindow()

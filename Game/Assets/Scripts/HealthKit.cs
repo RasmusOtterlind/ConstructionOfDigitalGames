@@ -32,7 +32,14 @@ public class HealthKit : MonoBehaviour
         }
         if (healthEntity != null)
         {
-            healthEntity.health += 50;
+            if (healthEntity.health < healthEntity.startHealth - 50f)
+            {
+                healthEntity.health += 50;
+            }
+            else if (healthEntity.startHealth - healthEntity.health < 50)
+            {
+                healthEntity.health = healthEntity.startHealth;
+            }
         }
         Destroy(gameObject);
     }

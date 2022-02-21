@@ -50,7 +50,7 @@ public class UpgradeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseWindow();
+            upgradeCanvas.SetActive(false);
         }
     }
 

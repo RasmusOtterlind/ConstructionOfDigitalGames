@@ -47,12 +47,18 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform muzzleTransform;
 
+    private GameObject openedParachute;
     private bool canShoot = true;
+    private bool reloading = false;
     
     //Player Stats
     public float damage;
     public int gold;
+    public int ammo = 8;
     
+    //Audio
+    public AudioClip fire;
+    public AudioClip reload;
     
     //Inventory
     public GameObject parachute;
@@ -63,7 +69,10 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI txtGold;
     public TextMeshProUGUI txtHealth;
     public TextMeshProUGUI txtDamage;
-
+    public TextMeshProUGUI txtAmmo;
+    public Slider reloadSlider;
+    
+    
     private void Awake()
     {
         damage = PlayerPrefs.GetFloat("damage");
@@ -75,10 +84,12 @@ public class PlayerController : MonoBehaviour
     {
         damage = PlayerPrefs.GetFloat("damage");
         gold = PlayerPrefs.GetInt("gold");
-
+        ammo = 8;
+        
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
 
+        reloadSlider.gameObject.SetActive(false);
         flashlight.SetActive(isFlashlightOn);
     }
 
@@ -113,8 +124,6 @@ public class PlayerController : MonoBehaviour
         HandleUI();
     }
     
-
-    private GameObject openedParachute;
     
     private void HandleParachute()
     {
@@ -171,9 +180,10 @@ public class PlayerController : MonoBehaviour
             health = 0;
         }
         healthSlider.value = health / maxHealth;
-        txtHealth.text = "Health: " + health;
-        txtDamage.text = "Damage: " + damage;
-        txtGold.text = "Gold: " + gold;
+        txtHealth.text = "Health:        " + health;
+        txtDamage.text = "Bullet Dmg:   " + damage;
+        txtGold.text = "SEK: " + gold;
+        txtAmmo.text = "Ammo:         " + ammo + "/∞";
     }
 
     private void HandleStats()
@@ -209,12 +219,27 @@ public class PlayerController : MonoBehaviour
     {
         HandleDirection();
         HandleAnimation();  
-        HandleJump();  
+        HandleJump();
+        HandleReload();
+    }
+
+    private void HandleReload()
+    {
+        if (reloadSlider.value < 1.0 && ammo == 0 && reloading)
+        {
+            reloadSlider.value += 0.1f;
+        }
+        else if(reloading && ammo == 0 && reloadSlider.value >= 1.0)
+        {
+            reloadSlider.gameObject.SetActive(false);
+            ammo = 8;
+            reloading = false;
+        }
     }
 
     private void HandleAnimation()
     {
-        rigidbody.velocity = new Vector3(input * 5, GetComponent<Rigidbody>().velocity.y, 0);
+        rigidbody.velocity = new Vector3(input * 7, GetComponent<Rigidbody>().velocity.y, 0);
         //Used for animation transitions
         animator.SetFloat("SpeedX", FacingSign* rigidbody.velocity.x);
     }
@@ -240,14 +265,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (velocity.y < -7)
+            if (velocity.y < -12)
             {
                 falldamage = true;
             }
         }
         if (jump && canJump)
         {
-            rigidbody.AddForce(new Vector3(0, 10*rigidbody.mass, 0), ForceMode.Impulse);
+            rigidbody.AddForce(new Vector3(0, 10*rigidbody.mass*1.5f, 0), ForceMode.Impulse);
             jump = false;
             falldamage = false;
         }
@@ -267,7 +292,7 @@ public class PlayerController : MonoBehaviour
     {
 
         shootCooldown += 60 * Time.deltaTime;
-        if (shootCooldown >= fireRate)
+        if (shootCooldown >= fireRate && ammo > 0)
         {
             //pretty sure you can normalize the deltaVector in order to scale the recoil but I will have to look at it
             deltaVector = targetTransform.position - muzzleTransform.position;
@@ -284,15 +309,24 @@ public class PlayerController : MonoBehaviour
 
             AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.pitch = Random.Range(0.90f, 1.10f);
-            audioSource.Play();
+            audioSource.PlayOneShot(fire);
 
+            ammo -= 1;
             shootCooldown = 0;
 
             if(recoil < maxRecoil)
             {
                 recoil += recoilIncrease;
             }
-
+        }
+        else if(ammo == 0 && !reloading)
+        {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(reload);
+            
+            reloadSlider.gameObject.SetActive(true);
+            reloadSlider.value = 0;
+            reloading = true;
         }
     }
 

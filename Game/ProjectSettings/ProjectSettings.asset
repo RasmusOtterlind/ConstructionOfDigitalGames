@@ -14,8 +14,8 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Sammarbetsspel
-  defaultCursor: {fileID: 2800000, guid: 2e5c566e4fa52eb428f131010ea50a4e, type: 3}
-  cursorHotspot: {x: 256, y: 256}
+  defaultCursor: {fileID: 2800000, guid: 8aa0a8fcd32818f4185f38218a6c2bee, type: 3}
+  cursorHotspot: {x: 150, y: 150}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1

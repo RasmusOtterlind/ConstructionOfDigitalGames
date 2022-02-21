@@ -1631,13 +1631,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2403709223805355541}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42703344d4ac8d545a32c5058572df5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6647842505720126903}
   airPlaneBomb: {fileID: 5802620479176905573, guid: 6bed5df494a08fe45a53877e5e1c9dd6, type: 3}
+  initialDelay: 15
+  intenisty: 0.1
 --- !u!1 &3142005495615362685
 GameObject:
   m_ObjectHideFlags: 0

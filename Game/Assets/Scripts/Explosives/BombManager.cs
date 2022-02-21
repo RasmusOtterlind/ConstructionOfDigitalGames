@@ -6,22 +6,34 @@ public class BombManager : MonoBehaviour
 {
     public Transform player;
     public GameObject airPlaneBomb;
+    public float initialDelay = 15;
+    public float intenisty = 0.05f;
 
-    private float lastBomb = 0;
-    private float randomTimeAddition;
+    private float startTime = 0;
+    private float compareTime = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        randomTimeAddition = Random.Range(1, 15f);
+        startTime = Time.time;
+        compareTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > lastBomb + randomTimeAddition && player != null) {
-            Instantiate(airPlaneBomb, player.position + new Vector3(0, 75, 0), Quaternion.Euler(90f, 0f, 0f));
-            randomTimeAddition = Random.Range(3, 15f);
-            lastBomb = Time.time;   
-        }
+        if (Time.time > startTime + initialDelay && player != null)
+        {
+            if(Time.time > compareTime + 1)
+            {
+                float random = Random.Range(0f, 1f);
+                if (random < intenisty)
+                {
+                    Debug.Log(random);
+                    Instantiate(airPlaneBomb, player.position + new Vector3(0, 75, 0), Quaternion.Euler(90f, 0f, 0f));
+                }
+                compareTime = Time.time;
+            }
+        }  
     }
 }

@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform muzzleTransform;
 
+    private bool canShoot = true;
+    
     //Player Stats
     public float damage;
     public int gold;
@@ -90,9 +92,13 @@ public class PlayerController : MonoBehaviour
             jump = true;
         }
         HandleParachute();
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot)
         {
+            canShoot = false;
             Shoot();
+        }else if (Input.GetButtonUp("Fire1") && !canShoot)
+        {
+            canShoot = true;
         }
         else
         {
@@ -106,6 +112,7 @@ public class PlayerController : MonoBehaviour
         HandleStats();
         HandleUI();
     }
+    
 
     private GameObject openedParachute;
     
@@ -260,7 +267,7 @@ public class PlayerController : MonoBehaviour
     {
 
         shootCooldown += 60 * Time.deltaTime;
-        if (shootCooldown >= fireRate )
+        if (shootCooldown >= fireRate)
         {
             //pretty sure you can normalize the deltaVector in order to scale the recoil but I will have to look at it
             deltaVector = targetTransform.position - muzzleTransform.position;

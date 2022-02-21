@@ -17,12 +17,20 @@ public class RagdollAI : MonoBehaviour
 
     void Start()
     {
-        root.GetComponent<Rigidbody>().AddForce(Vector3.forward * 10);
+        Vector3 dir = Vector3.right * 10;
+        if ((GameObject.FindWithTag("Player").transform.position - transform.position).x < 0)
+        {
+            dir = Vector3.right * 50;
+        }
+        else
+        {
+            dir = Vector3.left * 50;
+        }
         
         Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in rigidbodies)
         {
-            rb.AddForce(Vector3.right*10, ForceMode.Impulse);
+            rb.AddForce(dir, ForceMode.Impulse);
         }
 
     }

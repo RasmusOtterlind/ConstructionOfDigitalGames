@@ -52,7 +52,11 @@ public class PlayerController : MonoBehaviour
     //Player Stats
     public float damage;
     public int gold;
+    public int ammo = 8;
     
+    //Audio
+    public AudioClip fire;
+    public AudioClip reload;
     
     //Inventory
     public GameObject parachute;
@@ -63,6 +67,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI txtGold;
     public TextMeshProUGUI txtHealth;
     public TextMeshProUGUI txtDamage;
+    public TextMeshProUGUI txtAmmo;
 
     private void Awake()
     {
@@ -75,7 +80,8 @@ public class PlayerController : MonoBehaviour
     {
         damage = PlayerPrefs.GetFloat("damage");
         gold = PlayerPrefs.GetInt("gold");
-
+        ammo = 8;
+        
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
 
@@ -174,6 +180,7 @@ public class PlayerController : MonoBehaviour
         txtHealth.text = "Health: " + health;
         txtDamage.text = "Damage: " + damage;
         txtGold.text = "Gold: " + gold;
+        txtAmmo.text = "Ammo: " + ammo + "/∞";
     }
 
     private void HandleStats()
@@ -267,7 +274,7 @@ public class PlayerController : MonoBehaviour
     {
 
         shootCooldown += 60 * Time.deltaTime;
-        if (shootCooldown >= fireRate)
+        if (shootCooldown >= fireRate && ammo > 0)
         {
             //pretty sure you can normalize the deltaVector in order to scale the recoil but I will have to look at it
             deltaVector = targetTransform.position - muzzleTransform.position;
@@ -284,15 +291,21 @@ public class PlayerController : MonoBehaviour
 
             AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.pitch = Random.Range(0.90f, 1.10f);
-            audioSource.Play();
+            audioSource.PlayOneShot(fire);
 
+            ammo -= 1;
             shootCooldown = 0;
 
             if(recoil < maxRecoil)
             {
                 recoil += recoilIncrease;
             }
-
+        }
+        else
+        {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.PlayOneShot(reload);
+            ammo = 8;
         }
     }
 

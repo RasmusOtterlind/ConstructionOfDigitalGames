@@ -591,7 +591,7 @@ MonoBehaviour:
   capsuleCollider: {fileID: 4346898825704959664}
   desiredDistanceToPlayer: 5
   runningSpeed: 3
-  detectionRange: 20
+  detectionRange: 12
   shootDetectionRange: 10
   shootDelay: 1
   eyes: {fileID: 5142858261947021223}

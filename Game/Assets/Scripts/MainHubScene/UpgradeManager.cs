@@ -110,13 +110,13 @@ public class UpgradeManager : MonoBehaviour
 
     private void UpdateGoldText()
     {
-        goldText.SetText("Gold: " + currentGold);
+        goldText.SetText("SEK: " + currentGold);
     }
     private void UpdateCostText()
     {
         foreach (TextMeshProUGUI costText in costTexts)
         {
-            costText.SetText("Cost: " + currentCost);
+            costText.SetText("Upgrade " + currentCost + ":-");
         }
     }
 }

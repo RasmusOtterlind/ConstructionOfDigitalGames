@@ -8,6 +8,7 @@ public class BasicBullet : MonoBehaviour
     public int bounces;
     public Vector3 hitPoint;
     public float life = 3;
+    public GameObject bloodSplash;
     private float lifeTimer;
 
     private float damage;
@@ -47,12 +48,14 @@ public class BasicBullet : MonoBehaviour
         {
             HealthEntity healthEntity = collision.collider.GetComponent<HealthEntity>();
             healthEntity.takeDamage(damage);
+            Instantiate(bloodSplash, gameObject.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
         else if (collision.collider.CompareTag("Enemy"))
         {
             HealthEntity healthEntity = collision.collider.GetComponent<HealthEntity>();
             Debug.Log(healthEntity == null);
             healthEntity.takeDamage(damage);
+            Instantiate(bloodSplash, gameObject.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
         Destroy(gameObject);
 

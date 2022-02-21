@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5487304bc71e4624e9b05220777bca4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  bloodSplash: {fileID: 2992363443879330966, guid: 7529a1f9311605d458b1eb43c7aa10fd, type: 3}
 --- !u!82 &62840610401207124
 AudioSource:
   m_ObjectHideFlags: 0

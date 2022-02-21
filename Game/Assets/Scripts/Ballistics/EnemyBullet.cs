@@ -7,6 +7,9 @@ public class EnemyBullet : MonoBehaviour
     public float damage = 10;
     private bool destroy = false;
     private AudioSource audioSource;
+
+    public GameObject bloodSplash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,7 @@ public class EnemyBullet : MonoBehaviour
             {
                 print("Damage");
                 healthEntity.takeDamage(damage);
+                Instantiate(bloodSplash, gameObject.transform.position, Quaternion.Euler(0f, 0f, 0f));
             }
             HideGameObject();
         }

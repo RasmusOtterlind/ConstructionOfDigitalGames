@@ -227,6 +227,7 @@ MonoBehaviour:
   bounces: 2
   hitPoint: {x: 0, y: 0, z: 0}
   life: 3
+  bloodSplash: {fileID: 2992363443879330966, guid: 7529a1f9311605d458b1eb43c7aa10fd, type: 3}
   spawnedByPlayer: 0
 --- !u!96 &1300210622364506010
 TrailRenderer:

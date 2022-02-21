@@ -45,5 +45,4 @@ public class MoveScene : MonoBehaviour
             uiElement.SetActive(false);
         }
     }
-
 }

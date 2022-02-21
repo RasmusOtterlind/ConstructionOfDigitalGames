@@ -158,8 +158,11 @@ public class EnemyAI : MonoBehaviour
         {
             if(healthEntity.health <= 0)
             {
-                player.gameObject.GetComponent<PlayerController>().onEnemyKilled(goldValue);
-                Destroy(gameObject);
+                if (player.gameObject)
+                {
+                    player.gameObject.GetComponent<PlayerController>().onEnemyKilled(goldValue);
+                    Destroy(gameObject);
+                }
             }
         }
     }

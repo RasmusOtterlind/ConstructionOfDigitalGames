@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,18 @@ public class BossTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (boss == null)
+        {
+            OnBossDeath();
+        }
+    }
+
+    private void OnBossDeath()
+    {
+        foreach (GameObject fence in fences)
+        {
+            fence.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +41,8 @@ public class BossTrigger : MonoBehaviour
                 fence.SetActive(true);
             }
             boss.SetActive(true);
-            gameObject.SetActive(false);
+            GetComponent<BoxCollider>().enabled = false;
+            //gameObject.SetActive(false);
         }
     }
 }

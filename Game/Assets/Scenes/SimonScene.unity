@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.080255166, g: 0.099652655, b: 0.3010674, a: 1}
+  m_IndirectSpecularColor: {r: 0.080229335, g: 0.09962264, b: 0.3010066, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5542,10 +5542,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3018424195363475081, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 25.699951
-      objectReference: {fileID: 0}
     - target: {fileID: 4152666060582912296, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5554,66 +5550,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6519412846648016200, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -92.3999
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: levelSize
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: 373b94e4c4d80f84680b4ca24172aeb8, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: 968721552e9f00c469b1c93dd4e11306, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: 51867aff80dc0bc43a08fa6fa0b571f2, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: b223e685e4ed23f4a953481406149ef1, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 1152634033630700784, guid: 8bf456408364fe24f89acf8edd7dd792, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[5]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: 2386c10e9b7febc42896e0232bf333a2, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[6]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: 1c671e193f2c282408b37cdca8493ae7, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[7]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: e9aebfe13b508574fb694774aa6ff387, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[8]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: e9aebfe13b508574fb694774aa6ff387, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[9]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: e9aebfe13b508574fb694774aa6ff387, type: 3}
-    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: chunkPrefabs.Array.data[10]
-      value: 
-      objectReference: {fileID: 1541506119423924643, guid: e9aebfe13b508574fb694774aa6ff387, type: 3}
     - target: {fileID: 6614478286573809465, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -5661,14 +5597,6 @@ PrefabInstance:
     - target: {fileID: 6614478286573809467, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6647842505720126903, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 7867862823796854195, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -31.600098
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}

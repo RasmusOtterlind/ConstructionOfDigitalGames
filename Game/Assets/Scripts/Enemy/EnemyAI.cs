@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
 
     private EnemyStats enemyStats;
 
+    public GameObject ragdoll;
+
     public int goldValue = 10;
 
     // Start is called before the first frame update
@@ -160,6 +162,7 @@ public class EnemyAI : MonoBehaviour
             {
                 if (player.gameObject)
                 {
+                    GameObject ragdollObject = Instantiate(ragdoll, transform.position, transform.rotation);
                     player.gameObject.GetComponent<PlayerController>().onEnemyKilled(goldValue);
                     Destroy(gameObject);
                 }

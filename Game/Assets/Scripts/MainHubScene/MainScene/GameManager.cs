@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     private bool showDeadMenu = false;
     public GameObject menu = null;
     public GameObject deadMenu = null;
+    public Slider volumeSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,11 @@ public class GameManager : MonoBehaviour
        
     }
 
+    private void Awake()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("volume");
+    }
+
     public void setShowDeadMenu(bool value)
     {
         showDeadMenu = value;
@@ -80,6 +87,12 @@ public class GameManager : MonoBehaviour
     public void OnQuitClicked()
     {
         Application.Quit();
+    }
+
+    public void VolumeChanged()
+    {
+        AudioListener.volume = volumeSlider.value;
+        PlayerPrefs.SetFloat("volume", volumeSlider.value);
     }
 
     private void resetGame()

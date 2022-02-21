@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class GameManagerMenu : MonoBehaviour
 {
-    private bool audioIsOn = true;
-
     public Slider volumeSlider;
 
     private void Start()

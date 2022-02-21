@@ -47,7 +47,9 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform muzzleTransform;
 
+    private GameObject openedParachute;
     private bool canShoot = true;
+    private bool reloading = false;
     
     //Player Stats
     public float damage;
@@ -68,7 +70,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI txtHealth;
     public TextMeshProUGUI txtDamage;
     public TextMeshProUGUI txtAmmo;
-
+    public Slider reloadSlider;
+    
+    
     private void Awake()
     {
         damage = PlayerPrefs.GetFloat("damage");
@@ -85,6 +89,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
 
+        reloadSlider.gameObject.SetActive(false);
         flashlight.SetActive(isFlashlightOn);
     }
 
@@ -119,8 +124,6 @@ public class PlayerController : MonoBehaviour
         HandleUI();
     }
     
-
-    private GameObject openedParachute;
     
     private void HandleParachute()
     {
@@ -177,10 +180,10 @@ public class PlayerController : MonoBehaviour
             health = 0;
         }
         healthSlider.value = health / maxHealth;
-        txtHealth.text = "Health: " + health;
-        txtDamage.text = "Damage: " + damage;
-        txtGold.text = "Gold: " + gold;
-        txtAmmo.text = "Ammo: " + ammo + "/∞";
+        txtHealth.text = "Health:        " + health;
+        txtDamage.text = "Bullet Dmg:   " + damage;
+        txtGold.text = "SEK: " + gold;
+        txtAmmo.text = "Ammo:         " + ammo + "/∞";
     }
 
     private void HandleStats()
@@ -216,7 +219,22 @@ public class PlayerController : MonoBehaviour
     {
         HandleDirection();
         HandleAnimation();  
-        HandleJump();  
+        HandleJump();
+        HandleReload();
+    }
+
+    private void HandleReload()
+    {
+        if (reloadSlider.value < 1.0 && ammo == 0 && reloading)
+        {
+            reloadSlider.value += 0.1f;
+        }
+        else if(reloading && ammo == 0 && reloadSlider.value >= 1.0)
+        {
+            reloadSlider.gameObject.SetActive(false);
+            ammo = 8;
+            reloading = false;
+        }
     }
 
     private void HandleAnimation()
@@ -301,11 +319,14 @@ public class PlayerController : MonoBehaviour
                 recoil += recoilIncrease;
             }
         }
-        else
+        else if(ammo == 0 && !reloading)
         {
             AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.PlayOneShot(reload);
-            ammo = 8;
+            
+            reloadSlider.gameObject.SetActive(true);
+            reloadSlider.value = 0;
+            reloading = true;
         }
     }
 

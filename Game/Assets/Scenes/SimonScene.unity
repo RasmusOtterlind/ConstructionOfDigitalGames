@@ -5834,6 +5834,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6614478286168283492, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
+      propertyPath: reloadSlider
+      value: 
+      objectReference: {fileID: 2051922204}
     - target: {fileID: 6614478286573809465, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
       propertyPath: m_Name
       value: GameManager

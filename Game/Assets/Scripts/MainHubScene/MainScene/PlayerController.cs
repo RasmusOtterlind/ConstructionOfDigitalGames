@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAnimation()
     {
-        rigidbody.velocity = new Vector3(input * 5, GetComponent<Rigidbody>().velocity.y, 0);
+        rigidbody.velocity = new Vector3(input * 7, GetComponent<Rigidbody>().velocity.y, 0);
         //Used for animation transitions
         animator.SetFloat("SpeedX", FacingSign* rigidbody.velocity.x);
     }
@@ -247,14 +247,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (velocity.y < -7)
+            if (velocity.y < -12)
             {
                 falldamage = true;
             }
         }
         if (jump && canJump)
         {
-            rigidbody.AddForce(new Vector3(0, 10*rigidbody.mass, 0), ForceMode.Impulse);
+            rigidbody.AddForce(new Vector3(0, 10*rigidbody.mass*1.5f, 0), ForceMode.Impulse);
             jump = false;
             falldamage = false;
         }

@@ -247,7 +247,7 @@ public class PlayerController : MonoBehaviour
         }
         if (jump && canJump)
         {
-            rigidbody.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+            rigidbody.AddForce(new Vector3(0, 10*rigidbody.mass, 0), ForceMode.Impulse);
             jump = false;
             falldamage = false;
         }

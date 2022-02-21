@@ -2542,21 +2542,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6614478286573809465}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9281a954b0e15da4a90847bfd2c1fdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chunkPrefabs:
-  - {fileID: 5106844798293639080, guid: a876114ef9c29bc4589533c1e7009780, type: 3}
-  - {fileID: 2824325493708099691, guid: f64e05414f67cb64881f4ee39086ded9, type: 3}
-  - {fileID: 1541506119423924643, guid: f5a733c207003004fa2af9a798d76966, type: 3}
+  - {fileID: 1541506119423924643, guid: 373b94e4c4d80f84680b4ca24172aeb8, type: 3}
   - {fileID: 1541506119423924643, guid: 968721552e9f00c469b1c93dd4e11306, type: 3}
   - {fileID: 1541506119423924643, guid: 51867aff80dc0bc43a08fa6fa0b571f2, type: 3}
   - {fileID: 1541506119423924643, guid: b223e685e4ed23f4a953481406149ef1, type: 3}
   - {fileID: 1152634033630700784, guid: 8bf456408364fe24f89acf8edd7dd792, type: 3}
+  - {fileID: 1541506119423924643, guid: 2386c10e9b7febc42896e0232bf333a2, type: 3}
+  - {fileID: 1541506119423924643, guid: 1c671e193f2c282408b37cdca8493ae7, type: 3}
+  - {fileID: 1541506119423924643, guid: e9aebfe13b508574fb694774aa6ff387, type: 3}
   bossChunk: {fileID: 1541506119423924643, guid: b55b90c11b04a2c44987454d47be9e79, type: 3}
   endChunk: {fileID: 1541506119423924643, guid: 0ab1c857e0d1a8f47916af8e6d9e4d5a, type: 3}
+  levelSize: 15
 --- !u!1 &6662768279066322519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3628,7 +3630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8756167610760476740, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6100006
+      value: 1.64
       objectReference: {fileID: 0}
     - target: {fileID: 8756167610760476740, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3666,6 +3668,10 @@ PrefabInstance:
       propertyPath: txtGold
       value: 
       objectReference: {fileID: 1335647947}
+    - target: {fileID: 9083357415260306583, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
+      propertyPath: fireRate
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 9083357415260306583, guid: 33e90132ca6906f418e5956c85c51287, type: 3}
       propertyPath: inventory
       value: 

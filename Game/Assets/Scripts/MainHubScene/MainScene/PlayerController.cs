@@ -119,6 +119,10 @@ public class PlayerController : MonoBehaviour
         {
             ToggleFlashlight();
         }
+        if (Input.GetKeyDown(KeyCode.R) && ammo < 8)
+        {
+            Reload();
+        }
         
         HandleStats();
         HandleUI();
@@ -225,11 +229,11 @@ public class PlayerController : MonoBehaviour
 
     private void HandleReload()
     {
-        if (reloadSlider.value < 1.0 && ammo == 0 && reloading)
+        if (reloadSlider.value < 1.0 && reloading)
         {
             reloadSlider.value += 0.1f;
         }
-        else if(reloading && ammo == 0 && reloadSlider.value >= 1.0)
+        else if(reloading && reloadSlider.value >= 1.0)
         {
             reloadSlider.gameObject.SetActive(false);
             ammo = 8;
@@ -272,7 +276,7 @@ public class PlayerController : MonoBehaviour
         }
         if (jump && canJump)
         {
-            rigidbody.AddForce(new Vector3(0, 10*rigidbody.mass*1.5f, 0), ForceMode.Impulse);
+            rigidbody.AddForce(new Vector3(0, 6.5f*rigidbody.mass*1.5f, 0), ForceMode.Impulse);
             jump = false;
             falldamage = false;
         }
@@ -321,13 +325,18 @@ public class PlayerController : MonoBehaviour
         }
         else if(ammo == 0 && !reloading)
         {
-            AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.PlayOneShot(reload);
-            
-            reloadSlider.gameObject.SetActive(true);
-            reloadSlider.value = 0;
-            reloading = true;
+            Reload();
         }
+    }
+
+    private void Reload()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(reload);
+
+        reloadSlider.gameObject.SetActive(true);
+        reloadSlider.value = 0;
+        reloading = true;
     }
 
     public void onEnemyKilled(int goldValue)

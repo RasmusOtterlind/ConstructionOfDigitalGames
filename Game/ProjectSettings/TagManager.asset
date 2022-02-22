@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Helicopter
   - Fence
+  - Obstacle
   layers:
   - Default
   - TransparentFX

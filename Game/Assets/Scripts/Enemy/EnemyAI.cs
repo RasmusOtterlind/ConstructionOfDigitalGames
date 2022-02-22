@@ -30,6 +30,10 @@ public class EnemyAI : MonoBehaviour
 
     public int goldValue = 10;
 
+    public bool debugMovement = false;
+    public float sphereRadiusMultiplier = 2.0f;
+    public float sphereYOffsetMultiplier = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,21 +77,63 @@ public class EnemyAI : MonoBehaviour
 
         if (xDistance < 0)
         {
-            bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius * 2, groundMask, QueryTriggerInteraction.Ignore)
-                && !Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, enemyMask, QueryTriggerInteraction.Ignore);
+
+            Collider[] colliders = Physics.OverlapSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 4, capsuleCollider.radius * sphereYOffsetMultiplier, 0), capsuleCollider.radius * sphereRadiusMultiplier);
+
+            bool hasGround = false;
+            bool hasObstacle = false;
+           
+            if(colliders.Length > 0)
+            {
+                foreach (Collider collider in colliders)
+                {
+                    if (collider.tag == "Ground")
+                    {
+                        hasGround = true;
+                    }
+                    else if (collider.tag == "Obstacle")
+                    {
+                        hasObstacle = true;
+                        break;
+                    }
+                }
+            }
+
+            bool leftClear = hasGround && !hasObstacle;
+
             if (leftClear)
             {
                 rigidbody.velocity = new Vector3(-2 * runningSpeed, GetComponent<Rigidbody>().velocity.y, 0);
                 animator.SetFloat("SpeedX", -1 * rigidbody.velocity.x);
                 return;
             }
-            Debug.Log(leftClear);
 
         }
         else
         {
-            bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius * 2, groundMask, QueryTriggerInteraction.Ignore)
-                && !Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, enemyMask, QueryTriggerInteraction.Ignore);
+            Collider[] colliders = Physics.OverlapSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 4, capsuleCollider.radius * sphereYOffsetMultiplier, 0), capsuleCollider.radius * sphereRadiusMultiplier);
+
+            bool hasGround = false;
+            bool hasObstacle = false;
+
+            if (colliders.Length > 0)
+            {
+                foreach (Collider collider in colliders)
+                {
+                    if (collider.tag == "Ground")
+                    {
+                        hasGround = true;
+                    }
+                    else if (collider.tag == "Obstacle")
+                    {
+                        hasObstacle = true;
+                        break;
+                    }
+                }
+            }
+
+            bool rightClear = hasGround && !hasObstacle;
+
             if (rightClear)
             {
                 rigidbody.velocity = new Vector3(2 * runningSpeed, GetComponent<Rigidbody>().velocity.y, 0);
@@ -97,6 +143,18 @@ public class EnemyAI : MonoBehaviour
         }
         animator.SetFloat("SpeedX", 0);
     }
+
+    void OnDrawGizmos()
+    {
+        if (debugMovement)
+        {
+            // Draw a yellow sphere at the transform's position
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 4, capsuleCollider.radius * sphereYOffsetMultiplier, 0), capsuleCollider.radius * sphereRadiusMultiplier);
+            Gizmos.DrawSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 4, capsuleCollider.radius * sphereYOffsetMultiplier, 0), capsuleCollider.radius * sphereRadiusMultiplier);
+        }
+    }
+
     private void handleDetection()
     {
         Collider[] shootColliders = Physics.OverlapSphere(capsuleCollider.transform.position, shootDetectionRange);

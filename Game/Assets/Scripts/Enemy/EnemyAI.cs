@@ -73,7 +73,7 @@ public class EnemyAI : MonoBehaviour
 
         if (xDistance < 0)
         {
-            bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore)
+            bool leftClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius * 2, groundMask, QueryTriggerInteraction.Ignore)
                 && !Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(-capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, enemyMask, QueryTriggerInteraction.Ignore);
             if (leftClear)
             {
@@ -81,11 +81,12 @@ public class EnemyAI : MonoBehaviour
                 animator.SetFloat("SpeedX", -1 * rigidbody.velocity.x);
                 return;
             }
+            Debug.Log(leftClear);
 
         }
         else
         {
-            bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, groundMask, QueryTriggerInteraction.Ignore)
+            bool rightClear = Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius * 2, groundMask, QueryTriggerInteraction.Ignore)
                 && !Physics.CheckSphere(capsuleCollider.transform.position + new Vector3(capsuleCollider.radius * 2, 0, 0), capsuleCollider.radius, enemyMask, QueryTriggerInteraction.Ignore);
             if (rightClear)
             {
@@ -116,7 +117,7 @@ public class EnemyAI : MonoBehaviour
             } 
         }
     }
-    
+
     IEnumerator ShootWithDelay(Transform target)
     {
         if (!canShoot)

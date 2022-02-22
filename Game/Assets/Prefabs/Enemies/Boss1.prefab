@@ -595,7 +595,7 @@ MonoBehaviour:
   shootDelay: 0.3
   eyes: {fileID: 5142858261947021223}
   enemyShoot: {fileID: 4346898825704959665}
-  ragdoll: {fileID: 0}
+  ragdoll: {fileID: 3499895743443256746, guid: 8c6573750710f8c419257912bd53270c, type: 3}
   goldValue: 10
 --- !u!114 &4346898825704959665
 MonoBehaviour:

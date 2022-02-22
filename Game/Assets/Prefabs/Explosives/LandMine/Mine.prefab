@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 700
-  explosionRange: 50
+  explosionRange: 5
   damagePercentage: 0.1
 --- !u!82 &-3377680192955960773
 AudioSource:

@@ -1753,7 +1753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1375208834931893289
 Transform:
   m_ObjectHideFlags: 0
@@ -1784,7 +1784,7 @@ MonoBehaviour:
   player: {fileID: 6647842505720126903}
   airPlaneBomb: {fileID: 5802620479176905573, guid: 6bed5df494a08fe45a53877e5e1c9dd6, type: 3}
   initialDelay: 15
-  intenisty: 0.1
+  intenisty: 1
 --- !u!1 &3142005495615362685
 GameObject:
   m_ObjectHideFlags: 0

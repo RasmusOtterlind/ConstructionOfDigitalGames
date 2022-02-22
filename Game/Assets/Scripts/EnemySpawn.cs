@@ -26,17 +26,18 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-       Camera camera = Camera.main;
-       Vector3 viewPos = camera.WorldToViewportPoint(spawnedEnemy.transform.position);
-        if(Mathf.Abs(viewPos.x) > 3.0f)
+        if(spawnedEnemy != null)
         {
-            spawnedEnemy.SetActive(false);
-        }
-        else
-        {
-            spawnedEnemy.SetActive(true);
-        }
-        
+            Camera camera = Camera.main;
+            Vector3 viewPos = camera.WorldToViewportPoint(spawnedEnemy.transform.position);
+            if (Mathf.Abs(viewPos.x) > 3.0f)
+            {
+                spawnedEnemy.SetActive(false);
+            }
+            else
+            {
+                spawnedEnemy.SetActive(true);
+            }
+        }        
     }
 }

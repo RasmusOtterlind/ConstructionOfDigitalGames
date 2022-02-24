@@ -54,13 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361966882202454923}
-  m_LocalRotation: {x: 0.000000011175863, y: -0.7071068, z: 0.70710677, w: -0.000000022351726}
-  m_LocalPosition: {x: 0, y: -0.3770458, z: 0.07959998}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5386452, z: 0.07959983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8756167611638879591}
-  m_RootOrder: 0
+  m_Father: {fileID: 3840159351099872257}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &981411742965039243
 GameObject:
@@ -858,6 +858,7 @@ Transform:
   m_Children:
   - {fileID: 1951977300981453485}
   - {fileID: 8756167611638879591}
+  - {fileID: 9018671866826713590}
   m_Father: {fileID: 4023807706044184470}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1037,7 +1038,7 @@ GameObject:
   - component: {fileID: 5612083120993618091}
   - component: {fileID: -7724196727208853916}
   m_Layer: 0
-  m_Name: SimplePlayer
+  m_Name: SimplePlayerAK
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1142,10 +1143,9 @@ MonoBehaviour:
   flashlight: {fileID: 0}
   bullet: {fileID: 7337496254223716256, guid: 29bd91cf8d615f144aabcfa15aad43f0, type: 3}
   muzzleTransform: {fileID: 9018671866826713590}
-  damage: 10
+  damage: 20
   gold: 0
-  maxAmmo: 8
-  weapon: {fileID: 0}
+  maxAmmo: 30
   fire: {fileID: 0}
   reload: {fileID: 0}
   parachute: {fileID: 0}
@@ -1612,10 +1612,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 64ca3d6b4ab37b9418c2e37909a748a8, type: 3}
       propertyPath: m_Name
       value: MyfirstGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 64ca3d6b4ab37b9418c2e37909a748a8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64ca3d6b4ab37b9418c2e37909a748a8, type: 3}

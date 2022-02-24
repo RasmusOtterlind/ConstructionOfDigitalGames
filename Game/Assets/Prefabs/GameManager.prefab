@@ -108,8 +108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 36.0308, y: 30.9877}
+  m_AnchoredPosition: {x: 1.6339, y: 2.74}
+  m_SizeDelta: {x: 22.1288, y: 28.5067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &206414259
 CanvasRenderer:
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: bb5a22ce19960a344858b599e27eb9f4, type: 3}
+  m_Texture: {fileID: 2800000, guid: 7f980797c37a3c947b5a2777588bd7a5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1992,7 +1992,7 @@ MonoBehaviour:
   player: {fileID: 6647842505720126903}
   airPlaneBomb: {fileID: 5802620479176905573, guid: 6bed5df494a08fe45a53877e5e1c9dd6, type: 3}
   initialDelay: 15
-  intenisty: 1
+  intenisty: 0
 --- !u!1 &3142005495615362685
 GameObject:
   m_ObjectHideFlags: 0

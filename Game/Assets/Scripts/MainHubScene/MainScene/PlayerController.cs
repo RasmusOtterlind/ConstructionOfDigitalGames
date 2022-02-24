@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
     
     //Inventory
     public GameObject parachute;
+    public GameObject grenadePrefab;
+    private int grenadesInInventory = 0;
     
     // UI components
     public Slider healthSlider;
@@ -139,6 +141,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && ammo < 8 && !reloading)
         {
             Reload();
+        }
+        if (Input.GetKeyDown(KeyCode.G) && grenadesInInventory > 0)
+        {
+           // Throw the grenade
+           GameObject grenadeInstance = Instantiate(grenadePrefab, transform.position+ new Vector3(1, 1), Quaternion.identity);
+           grenadeInstance.GetComponent<Rigidbody>().velocity = new Vector3(10f, 10f);
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha1))

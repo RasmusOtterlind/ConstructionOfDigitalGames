@@ -32270,6 +32270,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4875910239314730432, guid: 968721552e9f00c469b1c93dd4e11306, type: 3}
+      propertyPath: m_Size.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875910239314730432, guid: 968721552e9f00c469b1c93dd4e11306, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4987535390815571287, guid: 968721552e9f00c469b1c93dd4e11306, type: 3}
       propertyPath: m_RootOrder
       value: 4

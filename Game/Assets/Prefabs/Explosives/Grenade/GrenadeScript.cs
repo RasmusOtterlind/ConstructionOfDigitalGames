@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrenadeScript : MonoBehaviour
 {
     public float explosionForce = 300;
-    public float explosionRange = 10;
+    public float explosionRange = 5;
     public float damagePercentage = 0.25f;
 
     private float timeToLive = 3.0f;

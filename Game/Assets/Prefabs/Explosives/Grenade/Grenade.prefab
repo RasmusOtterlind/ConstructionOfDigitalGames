@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.01
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4876,7 +4876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 500
-  explosionRange: 10
+  explosionRange: 5
   damagePercentage: 0.1
 --- !u!82 &1050004329141255877
 AudioSource:

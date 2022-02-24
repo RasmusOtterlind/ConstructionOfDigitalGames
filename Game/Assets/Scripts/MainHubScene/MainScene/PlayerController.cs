@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     public int gold;
     public int maxAmmo = 8;
     private int ammo = 8;
+    public float throwSpeed = 12f;
     
     //Weapon
     public GameObject[] weapons;
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
     //Inventory
     public GameObject parachute;
     public GameObject grenadePrefab;
-    private int grenadesInInventory = 10;
+    private int grenadesInInventory = 15;
     
     // UI components
     public Slider healthSlider;
@@ -154,10 +155,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.G) && grenadesInInventory > 0)
         {
-           // Throw the grenadeg
-           GameObject grenadeInstance = Instantiate(grenadePrefab, transform.position+ new Vector3(1, 1), Quaternion.identity);
-           grenadeInstance.GetComponent<Rigidbody>().velocity = new Vector3(7.5f, 7.5f);
-           grenadeInstance.GetComponent<Rigidbody>().AddTorque(0,0, Random.Range(0, 50), ForceMode.Force);
+            ThrowGrenade();
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -173,8 +171,7 @@ public class PlayerController : MonoBehaviour
         HandleStats();
         HandleUI();
     }
-    
-    
+
     private void HandleParachute()
     {
         if (Input.GetKeyDown("v"))
@@ -384,6 +381,15 @@ public class PlayerController : MonoBehaviour
         reloadSlider.gameObject.SetActive(true);
         reloadSlider.value = 0;
         reloading = true;
+    }
+
+    private void ThrowGrenade()
+    {
+        GameObject throwHand = GameObject.Find("Hand.L_end");
+        GameObject grenadeInstance = Instantiate(grenadePrefab, throwHand.transform.position, Quaternion.identity);
+        Vector3 difference = targetTransform.position - throwHand.transform.position;
+        grenadeInstance.GetComponent<Rigidbody>().velocity = Vector3.Normalize(difference) * throwSpeed;
+        grenadeInstance.GetComponent<Rigidbody>().AddTorque(0, 0, Random.Range(0, 50), ForceMode.Force);
     }
 
     public void onEnemyKilled(int goldValue)

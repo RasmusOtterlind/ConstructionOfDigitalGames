@@ -124,16 +124,11 @@ public class UpgradeManager : MonoBehaviour
     {
         if (currentGold >= 0)
         {
+            PlayerPrefs.SetInt("BoughtAK", 1);
+            PlayerPrefs.SetInt("AK", 1);
             currentGold -= 0;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<PlayerController>().weapons[0].SetActive(false);
-            player.GetComponent<PlayerController>().weapons[1].SetActive(true);
-            player.GetComponent<PlayerController>().muzzleTransform =
-                player.GetComponent<PlayerController>().muzzles[1];
-            
-            player.GetComponent<PlayerController>().maxAmmo = 30;
-            player.GetComponent<PlayerController>().isAk = true;
-            player.GetComponent<PlayerController>().fireRate = 12;
+            player.GetComponent<PlayerController>().updateWeapon();
         }
     }
 }

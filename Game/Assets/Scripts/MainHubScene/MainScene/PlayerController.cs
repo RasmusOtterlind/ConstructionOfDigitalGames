@@ -99,6 +99,10 @@ public class PlayerController : MonoBehaviour
 
         reloadSlider.gameObject.SetActive(false);
         flashlight.SetActive(isFlashlightOn);
+        
+        //Select starting weapon 1=AK, 0=pistol
+        PlayerPrefs.SetInt("AK", 1);
+        updateWeapon();
     }
 
     // Update is called once per frame
@@ -135,6 +139,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && ammo < 8 && !reloading)
         {
             Reload();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            PlayerPrefs.SetInt("AK", 0);
+            updateWeapon();
+        }else if (Input.GetKeyDown(KeyCode.Alpha2) && PlayerPrefs.GetInt("BoughtAK", 0) == 1)
+        {
+            PlayerPrefs.SetInt("AK", 1);
+            updateWeapon();
         }
         
         HandleStats();
@@ -383,6 +397,28 @@ public class PlayerController : MonoBehaviour
         gold = PlayerPrefs.GetInt("gold");
         damage = PlayerPrefs.GetFloat("damage");
         GetComponent<HealthEntity>().health = PlayerPrefs.GetFloat("health");
+    }
+
+    public void updateWeapon()
+    {
+        if (PlayerPrefs.GetInt("AK", 1) == 1)
+        {
+            weapons[0].SetActive(false);
+            weapons[1].SetActive(true);
+            muzzleTransform = muzzles[1];
+            maxAmmo = 30;
+            isAk = true;
+            fireRate = 12;
+        }
+        else
+        {
+            weapons[0].SetActive(true);
+            weapons[1].SetActive(false);
+            muzzleTransform = muzzles[0];
+            maxAmmo = 8;
+            isAk = false;
+            fireRate = 12;
+        }
     }
 
 }

@@ -1145,10 +1145,13 @@ MonoBehaviour:
   damage: 10
   gold: 0
   maxAmmo: 8
-  weapon: {fileID: 0}
-  fire: {fileID: 0}
+  weapons: []
+  muzzles: []
+  isAk: 0
+  fire: {fileID: 8300000, guid: 7695db15326123e4da42778f686defb2, type: 3}
   reload: {fileID: 0}
   parachute: {fileID: 0}
+  grenadePrefab: {fileID: 0}
   healthSlider: {fileID: 0}
   inventory: {fileID: 0}
   txtGold: {fileID: 0}

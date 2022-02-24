@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     //Inventory
     public GameObject parachute;
     public GameObject grenadePrefab;
-    private int grenadesInInventory = 0;
+    private int grenadesInInventory = 10;
     
     // UI components
     public Slider healthSlider;
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
         {
            // Throw the grenade
            GameObject grenadeInstance = Instantiate(grenadePrefab, transform.position+ new Vector3(1, 1), Quaternion.identity);
-           grenadeInstance.GetComponent<Rigidbody>().velocity = new Vector3(10f, 10f);
+           grenadeInstance.GetComponent<Rigidbody>().velocity = new Vector3(1f, 1f);
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha1))

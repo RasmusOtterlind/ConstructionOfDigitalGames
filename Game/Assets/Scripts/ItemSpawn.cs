@@ -18,7 +18,6 @@ public class ItemSpawn : MonoBehaviour
             spawnedPrefab.transform.position = new Vector3(spawnedPrefab.transform.position.x, spawnedPrefab.transform.position.y, 0f);
             print("Spawn item2");
         }
-
     }
 
     // Update is called once per frame

@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
     public Transform[] muzzles;
 
     public bool isAk = false;
-    
+
+    public AudioClip healthAudio;
     
     //Audio
     public AudioClip fire;

@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI txtHealth;
     public TextMeshProUGUI txtDamage;
     public TextMeshProUGUI txtAmmo;
+    public TextMeshProUGUI txtGrenade;
     public Slider reloadSlider;
     
     
@@ -231,6 +232,7 @@ public class PlayerController : MonoBehaviour
         txtDamage.text = "Bullet Dmg:   " + damage;
         txtGold.text = "SEK: " + gold;
         txtAmmo.text = "Ammo:         " + ammo + "/∞";
+        txtGrenade.text = "" + grenadesInInventory;
     }
 
     private void HandleStats()

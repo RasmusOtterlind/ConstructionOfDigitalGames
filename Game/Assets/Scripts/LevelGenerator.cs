@@ -20,7 +20,7 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < levelSize; i++)
         {
             Debug.Log(nextPosition);
-            Vector3 spawnPosition = new Vector3(nextPosition, Random.Range(0, 0), 0f);
+            Vector3 spawnPosition = new Vector3(nextPosition, Random.Range(0, 0), -0.6f);
             GameObject ground = Instantiate(chunkPrefabs[Random.Range(0, chunkPrefabs.Length)], spawnPosition, Quaternion.identity);
             nextPosition += ground.GetComponent<ChunkSize>().size;
         }
@@ -29,7 +29,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void SpawnFinalChunks()
     {
-        Vector3 spawnBossPosition = new Vector3(13.66f + nextPosition, 0, -0.84f);
+        Vector3 spawnBossPosition = new Vector3(13.66f + nextPosition, 0, -1.44f);
         GameObject boss = Instantiate(bossChunk, spawnBossPosition, Quaternion.Euler(0f, 180f, 0f));
         nextPosition += boss.GetComponent<ChunkSize>().size;
 

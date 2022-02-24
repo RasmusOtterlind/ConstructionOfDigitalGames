@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
         {
             ToggleFlashlight();
         }
-        if (Input.GetKeyDown(KeyCode.R) && ammo < 8 && !reloading)
+        if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo && !reloading)
         {
             Reload();
         }

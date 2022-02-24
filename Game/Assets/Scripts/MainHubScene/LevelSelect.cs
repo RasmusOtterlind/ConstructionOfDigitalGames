@@ -8,6 +8,7 @@ public class LevelSelect : MonoBehaviour
 
     [SerializeField] private GameObject uiElement;
     [SerializeField] private GameObject levelSelectCanvas;
+    [SerializeField] private GameObject bombManager;
 
     private bool isTrigger = false;
 
@@ -16,6 +17,7 @@ public class LevelSelect : MonoBehaviour
     {
         uiElement.SetActive(false);
         levelSelectCanvas.SetActive(false);
+        bombManager.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,6 +58,7 @@ public class LevelSelect : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         levelSelectCanvas.SetActive(false);
+        bombManager.SetActive(true);
         SceneManager.LoadScene(2);
     }
 
@@ -63,6 +66,7 @@ public class LevelSelect : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         levelSelectCanvas.SetActive(false);
+        bombManager.SetActive(true);
         SceneManager.LoadScene(3);
     }
     public void CloseWindow()

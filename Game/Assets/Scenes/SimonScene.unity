@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.080229335, g: 0.09962264, b: 0.3010066, a: 1}
+  m_IndirectSpecularColor: {r: 0.080255166, g: 0.099652655, b: 0.3010674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5558,6 +5558,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
+      propertyPath: chunkPrefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
+      propertyPath: chunkPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8666396941033267973, guid: 27ef05cb283f34d1a871b65859e86b68, type: 3}
+    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
+      propertyPath: chunkPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1541506119423924643, guid: 2386c10e9b7febc42896e0232bf333a2, type: 3}
+    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
+      propertyPath: chunkPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1541506119423924643, guid: 1c671e193f2c282408b37cdca8493ae7, type: 3}
+    - target: {fileID: 6614478285127205702, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
+      propertyPath: chunkPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 1541506119423924643, guid: e9aebfe13b508574fb694774aa6ff387, type: 3}
     - target: {fileID: 6614478286573809465, guid: 20266c53f6843384b9ff3930fa58ebb9, type: 3}
       propertyPath: m_Name
       value: GameManager

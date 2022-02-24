@@ -103,8 +103,16 @@ public class PlayerController : MonoBehaviour
         flashlight.SetActive(isFlashlightOn);
         
         //Select starting weapon 1=AK, 0=pistol
-        PlayerPrefs.SetInt("AK", 1);
-        updateWeapon();
+        if (PlayerPrefs.GetInt("BoughtAK", 0) == 1)
+        {
+            PlayerPrefs.SetInt("AK", 1);
+            updateWeapon();
+        }
+        else
+        {
+            PlayerPrefs.SetInt("AK", 0);
+            updateWeapon();
+        }
     }
 
     // Update is called once per frame

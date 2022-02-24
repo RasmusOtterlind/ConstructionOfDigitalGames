@@ -154,9 +154,10 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.G) && grenadesInInventory > 0)
         {
-           // Throw the grenade
+           // Throw the grenadeg
            GameObject grenadeInstance = Instantiate(grenadePrefab, transform.position+ new Vector3(1, 1), Quaternion.identity);
-           grenadeInstance.GetComponent<Rigidbody>().velocity = new Vector3(1f, 1f);
+           grenadeInstance.GetComponent<Rigidbody>().velocity = new Vector3(7.5f, 7.5f);
+           grenadeInstance.GetComponent<Rigidbody>().AddTorque(0,0, Random.Range(0, 50), ForceMode.Force);
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha1))

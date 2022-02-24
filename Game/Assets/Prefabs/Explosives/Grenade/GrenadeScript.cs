@@ -10,6 +10,8 @@ public class GrenadeScript : MonoBehaviour
 
     private float timeToLive = 3.0f;
     private float timeStarted;
+
+    private bool explosionStarted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,9 @@ public class GrenadeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > timeStarted + timeToLive)
+        if (Time.time > timeStarted + timeToLive && !explosionStarted)
         {
+            explosionStarted = true;
             ExplosionParticles();
             ExplosionForce();
             ExplosionSound();

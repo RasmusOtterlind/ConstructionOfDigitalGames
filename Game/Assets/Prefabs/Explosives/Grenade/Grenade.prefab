@@ -4838,6 +4838,7 @@ GameObject:
   - component: {fileID: 2210430234316801136}
   - component: {fileID: 1050004329141255877}
   - component: {fileID: -1794208875933430854}
+  - component: {fileID: 347551976192241567}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -4854,7 +4855,7 @@ Transform:
   m_GameObject: {fileID: 4056717641380524175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.93844, y: -0.78757, z: -0.00000012508}
-  m_LocalScale: {x: 36.990097, y: 36.990097, z: 36.990097}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5402415559420603890}
@@ -4989,6 +4990,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &347551976192241567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056717641380524175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5580950798054165017
 PrefabInstance:
   m_ObjectHideFlags: 0

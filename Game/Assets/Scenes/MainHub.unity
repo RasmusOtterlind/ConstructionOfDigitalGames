@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1557572665}
-  m_IndirectSpecularColor: {r: 0.080320075, g: 0.099717826, b: 0.30113068, a: 1}
+  m_IndirectSpecularColor: {r: 0.08042331, g: 0.09981665, b: 0.30122355, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5748,7 +5748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1592712865}
         m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeHealth
+        m_MethodName: BuyAk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

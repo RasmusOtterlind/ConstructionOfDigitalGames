@@ -54,7 +54,15 @@ public class PlayerController : MonoBehaviour
     //Player Stats
     public float damage;
     public int gold;
-    public int ammo = 8;
+    public int maxAmmo = 8;
+    private int ammo = 8;
+    
+    //Weapon
+    public GameObject[] weapons;
+    public Transform[] muzzles;
+
+    public bool isAk = false;
+    
     
     //Audio
     public AudioClip fire;
@@ -84,7 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         damage = PlayerPrefs.GetFloat("damage");
         gold = PlayerPrefs.GetInt("gold");
-        ammo = 8;
+        ammo = maxAmmo;
         
         rigidbody = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
@@ -103,11 +111,16 @@ public class PlayerController : MonoBehaviour
             jump = true;
         }
         HandleParachute();
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        if (Input.GetButton("Fire1") && isAk)
+        {
+            Shoot();
+        }
+        
+        if (Input.GetButtonDown("Fire1") && canShoot && !isAk)
         {
             canShoot = false;
             Shoot();
-        }else if (Input.GetButtonUp("Fire1") && !canShoot)
+        }else if (Input.GetButtonUp("Fire1") && !canShoot && !isAk)
         {
             canShoot = true;
         }
@@ -119,7 +132,7 @@ public class PlayerController : MonoBehaviour
         {
             ToggleFlashlight();
         }
-        if (Input.GetKeyDown(KeyCode.R) && ammo < 8)
+        if (Input.GetKeyDown(KeyCode.R) && ammo < 8 && !reloading)
         {
             Reload();
         }
@@ -222,7 +235,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         HandleDirection();
-        HandleAnimation();  
+        HandleAnimation();
         HandleJump();
         HandleReload();
     }
@@ -236,7 +249,7 @@ public class PlayerController : MonoBehaviour
         else if(reloading && reloadSlider.value >= 1.0)
         {
             reloadSlider.gameObject.SetActive(false);
-            ammo = 8;
+            ammo = maxAmmo;
             reloading = false;
         }
     }

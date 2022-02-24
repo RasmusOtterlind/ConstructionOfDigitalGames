@@ -119,4 +119,21 @@ public class UpgradeManager : MonoBehaviour
             costText.SetText("Upgrade " + currentCost + ":-");
         }
     }
+
+    public void BuyAk()
+    {
+        if (currentGold >= 0)
+        {
+            currentGold -= 0;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerController>().weapons[0].SetActive(false);
+            player.GetComponent<PlayerController>().weapons[1].SetActive(true);
+            player.GetComponent<PlayerController>().muzzleTransform =
+                player.GetComponent<PlayerController>().muzzles[1];
+            
+            player.GetComponent<PlayerController>().maxAmmo = 30;
+            player.GetComponent<PlayerController>().isAk = true;
+            player.GetComponent<PlayerController>().fireRate = 12;
+        }
+    }
 }

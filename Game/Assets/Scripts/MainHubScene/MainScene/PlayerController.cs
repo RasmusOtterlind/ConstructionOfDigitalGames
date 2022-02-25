@@ -162,10 +162,12 @@ public class PlayerController : MonoBehaviour
         {
             PlayerPrefs.SetInt("AK", 0);
             updateWeapon();
+            Reload();
         }else if (Input.GetKeyDown(KeyCode.Alpha2) && PlayerPrefs.GetInt("BoughtAK", 0) == 1)
         {
-            PlayerPrefs.SetInt("AK", 1);
+            PlayerPrefs.SetInt("AK", 1);           
             updateWeapon();
+            Reload();
         }
         
         HandleStats();

@@ -47,7 +47,7 @@ public class GrenadeScript : MonoBehaviour
             HealthEntity healthEntity = collider.GetComponent<HealthEntity>();
             if (healthEntity != null)
             {
-                healthEntity.takeDamage(healthEntity.startHealth * damagePercentage);
+                healthEntity.takeDamage(50);
             }
         }
         Rigidbody rigidbody = GetComponent<Rigidbody>();

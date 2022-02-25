@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     //Inventory
     public GameObject parachute;
     public GameObject grenadePrefab;
-    private int grenadesInInventory = 15;
+    public int grenadesInInventory = 3;
     
     // UI components
     public Slider healthSlider;
@@ -385,6 +385,7 @@ public class PlayerController : MonoBehaviour
 
     private void ThrowGrenade()
     {
+        grenadesInInventory--;
         GameObject throwHand = GameObject.Find("Hand.L_end");
         GameObject grenadeInstance = Instantiate(grenadePrefab, throwHand.transform.position, Quaternion.identity);
         Vector3 difference = targetTransform.position - throwHand.transform.position;

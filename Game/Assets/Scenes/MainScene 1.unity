@@ -23127,6 +23127,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 122875323472916482, guid: b223e685e4ed23f4a953481406149ef1, type: 3}
+      propertyPath: itemPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 122875323472916482, guid: b223e685e4ed23f4a953481406149ef1, type: 3}
+      propertyPath: itemPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4056717641380524175, guid: f9c4b09af3f24514591ef2fce575e1e8, type: 3}
     - target: {fileID: 133543273516447942, guid: b223e685e4ed23f4a953481406149ef1, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8

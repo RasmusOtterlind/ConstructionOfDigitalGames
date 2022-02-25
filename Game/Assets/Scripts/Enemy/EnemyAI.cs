@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     public float shootDetectionRange = 10f;
     public float shootDelay = 1f;
     private Transform player;
+    private Transform player2;
 
     public Transform eyes;
 
@@ -41,6 +42,7 @@ public class EnemyAI : MonoBehaviour
        capsuleCollider = GetComponent<CapsuleCollider>();
        enemyStats = GetComponent<EnemyStats>();
        canShoot = true;
+       player2 = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -219,10 +221,10 @@ public class EnemyAI : MonoBehaviour
         {
             if(healthEntity.health <= 0)
             {
-                if (player.gameObject)
+                if (player2.gameObject)
                 {
                     GameObject ragdollObject = Instantiate(ragdoll, transform.position, transform.rotation);
-                    player.gameObject.GetComponent<PlayerController>().onEnemyKilled(goldValue);
+                    player2.gameObject.GetComponent<PlayerController>().onEnemyKilled(goldValue);
                     Destroy(gameObject);
                 }
             }

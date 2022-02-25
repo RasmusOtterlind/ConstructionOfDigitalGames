@@ -38,7 +38,6 @@ public class GrenadeScript : MonoBehaviour
         explosion.GetComponent<ParticleSystem>().Play();
     }
 
-
     private void ExplosionForce()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRange);

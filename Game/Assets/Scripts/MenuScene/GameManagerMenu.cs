@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class GameManagerMenu : MonoBehaviour
 {
     public Slider volumeSlider;
-
+    public GameObject controlPanel;
+    
     private void Start()
     {
         PlayerPrefs.GetFloat("volume", 1.0f);
@@ -34,5 +35,10 @@ public class GameManagerMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Game is exiting");
+    }
+    
+    public void Controls()
+    {
+        controlPanel.SetActive(!controlPanel.activeSelf);
     }
 }

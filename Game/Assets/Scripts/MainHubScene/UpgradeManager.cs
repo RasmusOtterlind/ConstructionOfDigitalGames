@@ -122,11 +122,11 @@ public class UpgradeManager : MonoBehaviour
 
     public void BuyAk()
     {
-        if (currentGold >= 0)
+        if (currentGold >= 200)
         {
             PlayerPrefs.SetInt("BoughtAK", 1);
             PlayerPrefs.SetInt("AK", 1);
-            currentGold -= 0;
+            currentGold -= 200;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<PlayerController>().updateWeapon();
         }

@@ -23,10 +23,10 @@ public class UpgradeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentDamage = PlayerPrefs.GetFloat("damage");
-        currentHealth = PlayerPrefs.GetFloat("health");
-        currentGold = PlayerPrefs.GetInt("gold");
-        currentCost = PlayerPrefs.GetInt("upgradeCost");
+        currentDamage = PlayerPrefs.GetFloat("damage", 10);
+        currentHealth = PlayerPrefs.GetFloat("health", 100);
+        currentGold = PlayerPrefs.GetInt("gold", 0);
+        currentCost = PlayerPrefs.GetInt("upgradeCost", 100);
         UpdateCostText();
         UpdateGoldText();
         UpdateDamageText();
@@ -35,10 +35,10 @@ public class UpgradeManager : MonoBehaviour
 
     private void Awake()
     {
-        currentDamage = PlayerPrefs.GetFloat("damage");
-        currentHealth = PlayerPrefs.GetFloat("health");
-        currentGold = PlayerPrefs.GetInt("gold");
-        currentCost = PlayerPrefs.GetInt("upgradeCost");
+        currentDamage = PlayerPrefs.GetFloat("damage", 10);
+        currentHealth = PlayerPrefs.GetFloat("health", 100);
+        currentGold = PlayerPrefs.GetInt("gold", 0);
+        currentCost = PlayerPrefs.GetInt("upgradeCost", 100);
         UpdateCostText();
         UpdateGoldText();
         UpdateDamageText();
